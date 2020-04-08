@@ -14,7 +14,7 @@ namespace FoodShare.Services
     {
         public async Task<AuthResponse> Login(User user)
         {
-            string url = $"auth/validate";
+            string url = $"/auth/validate";
             var requestBody = await Task.Run(() => JsonConvert.SerializeObject(user));
             using (HttpClient httpClient = new HttpClient())
             {

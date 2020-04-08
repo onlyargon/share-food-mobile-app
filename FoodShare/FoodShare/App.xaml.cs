@@ -16,7 +16,7 @@ namespace FoodShare
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjM0NzgxQDMxMzgyZTMxMmUzMGZWSTlhdmRaVEpzLzYxNEtkTFNEVWs0d085RWMraW5KRUFkc2RTTGdTSnM9");
             InitializeComponent();
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             
             if (!IsUserLoggedIn)
             {

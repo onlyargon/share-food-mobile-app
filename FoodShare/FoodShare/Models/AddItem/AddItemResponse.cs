@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using static FoodShare.Models.Constants;
+using System.Text;
 
 namespace FoodShare.Models
 {
-    public class Item
+    public class AddItemResponse
     {
-        public Item()
+        public AddItemResponse()
         {
-            this.Data = new List<Data>();
+            this.Data = new ItemData();
         }
         public int Code { get; set; }
         public string Message { get; set; }
-        public List<Data>  Data { get; set; }
+        public ItemData Data { get; set; }
     }
 
-    public class Data
+    public class ItemData
     {
         public int id { get; set; }
         public int userId { get; set; }

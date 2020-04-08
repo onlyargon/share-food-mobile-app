@@ -26,19 +26,22 @@
                 <StackLayout Spacing="20" Padding="15" Margin="0,20,0,0">
                     <FlexLayout Direction="Column">
                         <Label Text=" Food type" FontSize="Medium" />
-                        <Picker x:Name="FoodType"/>
+                        <Picker x:Name="FoodTypeSelector" ItemsSource="{Binding FoodTypes}" ItemDisplayBinding="{Binding description}"/>
                     </FlexLayout>
                     <FlexLayout Direction="Column">
                         <Label Text=" Food name" FontSize="Medium" />
-                        <Entry  x:Name="FoodName"/>
+                        <Entry  x:Name="FoodName" TextChanged="FoodName_TextChanged"/>
+                        <Label x:Name="FoodNameErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
                     </FlexLayout>
                     <FlexLayout Direction="Column">
                         <Label Text=" Unit price" FontSize="Medium" />
-                        <Entry x:Name="UnitPrice" Keyboard="Numeric"/>
+                        <Entry x:Name="UnitPrice" Keyboard="Numeric" TextChanged="UnitPrice_TextChanged" Unfocused="UnitPrice_Unfocused"/>
+                        <Label x:Name="UnitPriceErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
                     </FlexLayout>
                     <FlexLayout Direction="Column">
                         <Label Text=" Quantity" FontSize="Medium" />
-                        <Entry x:Name="Quantity" Keyboard="Numeric"/>
+                        <Entry x:Name="Quantity" Keyboard="Numeric" TextChanged="Quantity_TextChanged"/>
+                        <Label x:Name="QuantityErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
                     </FlexLayout>
                     <FlexLayout Direction="Column">
                         <Label Text=" Description" FontSize="Medium" />

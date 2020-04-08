@@ -26,10 +26,10 @@ namespace FoodShare.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Data
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                //Text = "Item 1",
+                //Description = "This is an item description."
             };
 
             viewModel = new ItemDetailViewModel(item);

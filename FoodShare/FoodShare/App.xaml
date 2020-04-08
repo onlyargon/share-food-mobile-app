@@ -38,6 +38,7 @@
             <Color x:Key="NavigationPrimary">#69C149</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
             <Style TargetType="Label">
@@ -53,6 +54,10 @@
                 <Setter Property="FontSize" Value="14" />
             </Style>
             <Style TargetType="DatePicker">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style TargetType="Picker">
                 <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
                 <Setter Property="FontSize" Value="14" />
             </Style>

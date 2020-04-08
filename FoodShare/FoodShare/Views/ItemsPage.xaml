@@ -9,9 +9,15 @@
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Clicked="OnCart_Clicked" Order="Primary" Text="Item 1" Priority="0">
+        <ToolbarItem Clicked="OnCart_Clicked" Order="Primary" Priority="0">
             <ToolbarItem.IconImageSource>
                 <FontImageSource Glyph="&#xf0110;"
+                        Color="White" FontFamily="{StaticResource MaterialFontFamily}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Clicked="OnLogout_Clicked" Text="Logout" Order="Secondary" Priority="0">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xf0343;"
                         Color="White" FontFamily="{StaticResource MaterialFontFamily}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
@@ -24,38 +30,40 @@
 
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
         <Grid>
-            <Label Text="{Binding Logout}" FontFamily="{DynamicResource MaterialFontFamily}"/>
-            
-
-            <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding Items}">
-                <d:CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>First Item</x:String>
-                        <x:String>Second Item</x:String>
-                        <x:String>Third Item</x:String>
-                        <x:String>Fourth Item</x:String>
-                        <x:String>Fifth Item</x:String>
-                        <x:String>Sixth Item</x:String>
-                    </x:Array>
-                </d:CollectionView.ItemsSource>
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>-->
+            <CollectionView Grid.Row="0" x:Name="ItemsCollectionView" ItemsSource="{Binding Items}" Margin="0,20,0,0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Text}" 
-                                d:Text="{Binding .}"
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                            <Label Text="{Binding Description}" 
-                                d:Text="Item descripton"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
+                        <StackLayout Padding="10,5,10,5">
+                            <Frame BackgroundColor="White" BorderColor="White" HasShadow="True" CornerRadius="10" Padding="0" IsClippedToBounds="True" HeightRequest="100">
+                                <FlexLayout Direction="Row" JustifyContent="Start">
 
-
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
+                                    <Image Aspect="AspectFill" WidthRequest="100" BackgroundColor="Wheat" Source="food.jpg">
+                                        <!--<Image.Source>
+                                            <FontImageSource Glyph="&#xf02e9;" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                        </Image.Source>-->
+                                    </Image>
+                                    
+                                    <StackLayout Padding="10">
+                                        <Label Text="{Binding foodType}" 
+                                        d:Text="{Binding .}"
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16" />
+                                        <Label Text="{Binding foodName}" 
+                                        d:Text="Item descripton"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="13" />
+                                    </StackLayout>
+                                </FlexLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                            </Frame>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

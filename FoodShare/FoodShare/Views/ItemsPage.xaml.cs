@@ -11,6 +11,7 @@ using FoodShare.Models;
 using FoodShare.Views;
 using FoodShare.ViewModels;
 using FoodShare.Services;
+using Xamarin.Essentials;
 
 namespace FoodShare.Views
 {
@@ -30,9 +31,17 @@ namespace FoodShare.Views
 
         async void OnItemSelected(object sender, EventArgs args)
         {
-            var layout = (BindableObject)sender;
-            var item = (Item)layout.BindingContext;
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            try
+            {
+                var layout = (Frame)sender;
+                var item = (Data)layout.BindingContext;
+                await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -54,7 +63,10 @@ namespace FoodShare.Views
             if (answer)
             {
                 App.IsUserLoggedIn = false;
-                //Navigation.InsertPageBefore(new LoginPage(), this);
+
+                //removing stored token from secure storage
+                SecureStorage.Remove("auth_token");
+
                 await Navigation.PopAsync();
 
                 Application.Current.MainPage = new LoginPage();

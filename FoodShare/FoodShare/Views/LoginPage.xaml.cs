@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -43,7 +43,17 @@ namespace FoodShare.Views
                         if (res.data.Code == 0)
                         {
                             App.IsUserLoggedIn = true;
-                            //await Navigation.PopAsync();
+
+                            //storing token in secure storage
+                            try
+                            {
+                                await SecureStorage.SetAsync("auth_token", res.token);
+                            }
+                            catch (Exception ex)
+                            {
+                                // Possible that device doesn't support secure storage on device.
+                            }
+                            OperationData.userId = res.data.Data.userId;
                             Application.Current.MainPage = new MainPage();
                         }
                         else
