@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            mc:Ignorable="d"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="#EEEEEE"
+            BarTextColor="#757575"
+            android:TabbedPage.BarItemColor="#C3C3C3"
+            android:TabbedPage.BarSelectedItemColor="#757575"
+            xmlns:views="clr-namespace:FoodShare.Views"
+            x:Class="FoodShare.Views.MainPage"
+            NavigationPage.HasNavigationBar="False">
+
+    <TabbedPage.Children>
+        <NavigationPage Title="Home">
+            <NavigationPage.IconImageSource>
+                <FontImageSource Glyph="&#xf02de;" FontFamily="{StaticResource MaterialFontFamily}"/>
+            </NavigationPage.IconImageSource>
+            <x:Arguments>
+                <views:ItemsPage />
+            </x:Arguments>
+        </NavigationPage>
+        
+        <NavigationPage Title="Favourites">
+            <NavigationPage.IconImageSource>
+                <FontImageSource Glyph="&#xf02d1;" FontFamily="{StaticResource MaterialFontFamily}"/>
+            </NavigationPage.IconImageSource>
+            <x:Arguments>
+                <views:FavouritesPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Orders">
+            <NavigationPage.IconImageSource>
+                <FontImageSource Glyph="&#xf0449;" FontFamily="{StaticResource MaterialFontFamily}"/>
+            </NavigationPage.IconImageSource>
+            <x:Arguments>
+                <views:PastOrdersPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Profile">
+            <NavigationPage.IconImageSource>
+                <FontImageSource Glyph="&#xf0644;" FontFamily="{StaticResource MaterialFontFamily}"/>
+            </NavigationPage.IconImageSource>
+            <x:Arguments>
+                <views:ProfilePage />
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+    
+</TabbedPage>

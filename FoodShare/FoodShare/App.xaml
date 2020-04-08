@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FoodShare.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Fonts-->
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons" />
+                <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+                <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="FontIcon" x:TypeArguments="x:String">
+                <On Platform="Android" Value="fonticon.ttf#fonticon" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsRegular">
+                <On Platform="iOS" Value="Poppins"/>
+                <On Platform="Android" Value="Poppins-Regular.ttf#Regular"/>
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsMedium">
+                <On Platform="iOS" Value="Poppins"/>
+                <On Platform="Android" Value="Poppins-Medium.ttf#Medium"/>
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsSemiBold">
+                <On Platform="iOS" Value="Poppins"/>
+                <On Platform="Android" Value="Poppins-SemiBold.ttf#SemiBold"/>
+            </OnPlatform>
+            
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#69C149</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsMedium}"/>
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style TargetType="Editor">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>

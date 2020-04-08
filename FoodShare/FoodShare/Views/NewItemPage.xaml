@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FoodShare.Views.NewItemPage"
+             Title="New Item">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Item 1" Priority="0" Clicked="Cancel_Clicked" >
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xf0156;"
+                        Color="White" FontFamily="{StaticResource MaterialFontFamily}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Spacing="20" Padding="15" Margin="0,20,0,0">
+                    <FlexLayout Direction="Column">
+                        <Label Text=" Food type" FontSize="Medium" />
+                        <Picker x:Name="FoodType"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Column">
+                        <Label Text=" Food name" FontSize="Medium" />
+                        <Entry  x:Name="FoodName"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Column">
+                        <Label Text=" Unit price" FontSize="Medium" />
+                        <Entry x:Name="UnitPrice" Keyboard="Numeric"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Column">
+                        <Label Text=" Quantity" FontSize="Medium" />
+                        <Entry x:Name="Quantity" Keyboard="Numeric"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Column">
+                        <Label Text=" Description" FontSize="Medium" />
+                        <Editor x:Name="Description" Keyboard="Text" AutoSize="TextChanges" MaxLength="200"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Column">
+                        <Label Text=" Prepared on" FontSize="Medium" />
+                        <DatePicker x:Name="DatePrepared"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Column" Margin="0,0,0,30">
+                        <Label Text=" Expiry date" FontSize="Medium" />
+                        <DatePicker x:Name="DateExpiry"/>
+                    </FlexLayout>
+
+
+                </StackLayout>
+                <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="End" BackgroundColor="Accent">
+                    <Button x:Name="BtnClear" Text="Clear" TextColor="#757575" BackgroundColor="#C3C3C3" HorizontalOptions="FillAndExpand" Clicked="BtnClear_Clicked" />
+                    <Button x:Name="BtnProceed" Text="Proceed" TextColor="White" BackgroundColor="Accent" HorizontalOptions="FillAndExpand" Clicked="Save_Clicked"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>

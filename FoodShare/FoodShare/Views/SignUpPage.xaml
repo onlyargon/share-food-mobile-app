@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="FoodShare.Views.SignUpPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text=" Sign up" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" FontSize="28" TextColor="Black" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                <StackLayout Grid.Row="1" Margin="0,30,0,0">
+                    <inputLayout:SfTextInputLayout 
+                        x:Name="UserNameEntryInput"
+                        ContainerType="Outlined" 
+                        Hint="Username  "
+                        ErrorText="This field is required">
+                        <Entry x:Name="UserNameEntry" PlaceholderColor="#707070" TextChanged="UserNameEntry_TextChanged"/>
+                        <inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:LabelStyle FontSize="16">
+                                <inputLayout:LabelStyle.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                </inputLayout:LabelStyle.FontFamily>
+                            </inputLayout:LabelStyle>
+                        </inputLayout:SfTextInputLayout.HintLabelStyle>
+                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <inputLayout:LabelStyle FontSize="10">
+                                <inputLayout:LabelStyle.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                </inputLayout:LabelStyle.FontFamily>
+                            </inputLayout:LabelStyle>
+                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout 
+                        x:Name="PasswordEntryInput"
+                        ContainerType="Outlined" 
+                        Hint="Password "
+                        EnablePasswordVisibilityToggle="True"
+                        ErrorText="This field is required">
+                        <Entry  x:Name="PasswordEntry" IsPassword="True" PlaceholderColor="#707070" TextChanged="PasswordEntry_TextChanged"/>
+                        <inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:LabelStyle FontSize="16">
+                                <inputLayout:LabelStyle.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                </inputLayout:LabelStyle.FontFamily>
+                            </inputLayout:LabelStyle>
+                        </inputLayout:SfTextInputLayout.HintLabelStyle>
+                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <inputLayout:LabelStyle FontSize="10">
+                                <inputLayout:LabelStyle.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                </inputLayout:LabelStyle.FontFamily>
+                            </inputLayout:LabelStyle>
+                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout 
+                        x:Name="ConfirmPasswordEntryInput"
+                        ContainerType="Outlined" 
+                        Hint="Confirm password   "
+                        EnablePasswordVisibilityToggle="False">
+                        <Entry  x:Name="ConfirmPasswordEntry" IsPassword="True" PlaceholderColor="#707070" TextChanged="ConfirmPasswordEntry_TextChanged"/>
+                        <inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:LabelStyle FontSize="16">
+                                <inputLayout:LabelStyle.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                </inputLayout:LabelStyle.FontFamily>
+                            </inputLayout:LabelStyle>
+                        </inputLayout:SfTextInputLayout.HintLabelStyle>
+                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <inputLayout:LabelStyle FontSize="10">
+                                <inputLayout:LabelStyle.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                </inputLayout:LabelStyle.FontFamily>
+                            </inputLayout:LabelStyle>
+                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout 
+                        x:Name="ContactEntryInput"
+                        ContainerType="Outlined" 
+                        Hint="Contact number    "
+                        EnablePasswordVisibilityToggle="False">
+                        <Entry  x:Name="ContactEntry" IsPassword="True" PlaceholderColor="#707070" TextChanged="ContactEntry_TextChanged" Keyboard="Telephone"/>
+                        <inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:LabelStyle FontSize="16">
+                                <inputLayout:LabelStyle.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                </inputLayout:LabelStyle.FontFamily>
+                            </inputLayout:LabelStyle>
+                        </inputLayout:SfTextInputLayout.HintLabelStyle>
+                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <inputLayout:LabelStyle FontSize="10">
+                                <inputLayout:LabelStyle.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                </inputLayout:LabelStyle.FontFamily>
+                            </inputLayout:LabelStyle>
+                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    </inputLayout:SfTextInputLayout>
+
+                    <FlexLayout Direction="Column">
+                        <Label Text=" Account type" Margin="0,10,0,20"/>
+
+                        <syncfusion:SfRadioGroup Orientation="Vertical" x:Name="AccountType" VerticalOptions="CenterAndExpand" CheckedChanged="AccountType_CheckedChanged">
+                            <syncfusion:SfRadioButton Text="Household" FontSize="14" x:Name="HouseholdRadioButton" Margin="0,0,0,10" IsChecked="True" FontFamily="{StaticResource PoppinsRegular}"/>
+                            <syncfusion:SfRadioButton Text="Business" FontSize="14" x:Name="BusinessRadioButton" FontFamily="{StaticResource PoppinsRegular}"/>
+                        </syncfusion:SfRadioGroup>
+                    </FlexLayout>
+                </StackLayout>
+            </Grid>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="End" BackgroundColor="Accent">
+                <Button x:Name="BtnCancel" Text="Cancel" TextColor="#757575" BackgroundColor="#C3C3C3" HorizontalOptions="FillAndExpand" Clicked="BtnCancel_Clicked" />
+                <Button x:Name="BtnProceed" Text="Proceed" TextColor="White" BackgroundColor="Accent" HorizontalOptions="FillAndExpand" Clicked="BtnProceed_Clicked"/>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding IsBusy}" BackgroundColor="White" Opacity="1" Orientation="Vertical" x:Name="BusyIndicator">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="50">
+                    <ActivityIndicator Color="Accent" IsRunning="true" />
+                    <Label x:Name="progressname" Text="Please wait ..." TextColor="Accent" VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
