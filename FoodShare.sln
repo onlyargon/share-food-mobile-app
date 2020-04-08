@@ -5,9 +5,7 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodShare.Android", "FoodShare\FoodShare.Android\FoodShare.Android.csproj", "{59EA29BC-19EE-47DE-AE41-B3A9FE58C6B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodShare.iOS", "FoodShare\FoodShare.iOS\FoodShare.iOS.csproj", "{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodShare", "FoodShare\FoodShare\FoodShare.csproj", "{B8517A00-360C-4BA9-83CF-0E9F08F6CAAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodShare", "FoodShare\FoodShare\FoodShare.csproj", "{B8517A00-360C-4BA9-83CF-0E9F08F6CAAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,24 +35,6 @@ Global
 		{59EA29BC-19EE-47DE-AE41-B3A9FE58C6B9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{59EA29BC-19EE-47DE-AE41-B3A9FE58C6B9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{59EA29BC-19EE-47DE-AE41-B3A9FE58C6B9}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|Any CPU.ActiveCfg = Debug|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|Any CPU.Build.0 = Debug|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|Any CPU.Deploy.0 = Debug|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|iPhone.Build.0 = Debug|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|iPhone.Deploy.0 = Debug|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|Any CPU.ActiveCfg = Release|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|Any CPU.Build.0 = Release|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|Any CPU.Deploy.0 = Release|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|iPhone.ActiveCfg = Release|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|iPhone.Build.0 = Release|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|iPhone.Deploy.0 = Release|iPhone
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{7DF46410-F76C-4710-AC0E-AD7BE75D9D46}.Release|iPhoneSimulator.Deploy.0 = Release|iPhoneSimulator
 		{B8517A00-360C-4BA9-83CF-0E9F08F6CAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B8517A00-360C-4BA9-83CF-0E9F08F6CAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8517A00-360C-4BA9-83CF-0E9F08F6CAAE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

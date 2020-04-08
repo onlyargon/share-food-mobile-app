@@ -80,6 +80,36 @@ namespace FoodShare.Droid
 			global::Syncfusion.Buttons.XForms.Android.Resource.Styleable.SfSegmentedControl_segmentedHeight = global::FoodShare.Droid.Resource.Styleable.SfSegmentedControl_segmentedHeight;
 			global::Syncfusion.Buttons.XForms.Android.Resource.Styleable.SfSegmentedControl_segmentedPadding = global::FoodShare.Droid.Resource.Styleable.SfSegmentedControl_segmentedPadding;
 			global::Syncfusion.Buttons.XForms.Android.Resource.Styleable.SfSegmentedControl_segmentedWidth = global::FoodShare.Droid.Resource.Styleable.SfSegmentedControl_segmentedWidth;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar1 = global::FoodShare.Droid.Resource.Drawable.Avatar1;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar10 = global::FoodShare.Droid.Resource.Drawable.Avatar10;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar11 = global::FoodShare.Droid.Resource.Drawable.Avatar11;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar12 = global::FoodShare.Droid.Resource.Drawable.Avatar12;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar13 = global::FoodShare.Droid.Resource.Drawable.Avatar13;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar14 = global::FoodShare.Droid.Resource.Drawable.Avatar14;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar15 = global::FoodShare.Droid.Resource.Drawable.Avatar15;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar16 = global::FoodShare.Droid.Resource.Drawable.Avatar16;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar17 = global::FoodShare.Droid.Resource.Drawable.Avatar17;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar18 = global::FoodShare.Droid.Resource.Drawable.Avatar18;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar19 = global::FoodShare.Droid.Resource.Drawable.Avatar19;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar2 = global::FoodShare.Droid.Resource.Drawable.Avatar2;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar20 = global::FoodShare.Droid.Resource.Drawable.Avatar20;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar21 = global::FoodShare.Droid.Resource.Drawable.Avatar21;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar22 = global::FoodShare.Droid.Resource.Drawable.Avatar22;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar23 = global::FoodShare.Droid.Resource.Drawable.Avatar23;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar24 = global::FoodShare.Droid.Resource.Drawable.Avatar24;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar25 = global::FoodShare.Droid.Resource.Drawable.Avatar25;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar26 = global::FoodShare.Droid.Resource.Drawable.Avatar26;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar27 = global::FoodShare.Droid.Resource.Drawable.Avatar27;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar28 = global::FoodShare.Droid.Resource.Drawable.Avatar28;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar29 = global::FoodShare.Droid.Resource.Drawable.Avatar29;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar3 = global::FoodShare.Droid.Resource.Drawable.Avatar3;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar30 = global::FoodShare.Droid.Resource.Drawable.Avatar30;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar4 = global::FoodShare.Droid.Resource.Drawable.Avatar4;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar5 = global::FoodShare.Droid.Resource.Drawable.Avatar5;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar6 = global::FoodShare.Droid.Resource.Drawable.Avatar6;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar7 = global::FoodShare.Droid.Resource.Drawable.Avatar7;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar8 = global::FoodShare.Droid.Resource.Drawable.Avatar8;
+			global::Syncfusion.XForms.Android.Core.Resource.Drawable.Avatar9 = global::FoodShare.Droid.Resource.Drawable.Avatar9;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.input_layout_drop_down_icon = global::FoodShare.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglecollapseicon = global::FoodShare.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglevisibleicon = global::FoodShare.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
@@ -281,6 +311,10 @@ namespace FoodShare.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_bottom_sheet_slide_out = global::FoodShare.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_snackbar_in = global::FoodShare.Droid.Resource.Animation.design_snackbar_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_snackbar_out = global::FoodShare.Droid.Resource.Animation.design_snackbar_out;
+			global::Xamarin.Forms.Platform.Android.Resource.Animation.EnterFromLeft = global::FoodShare.Droid.Resource.Animation.EnterFromLeft;
+			global::Xamarin.Forms.Platform.Android.Resource.Animation.EnterFromRight = global::FoodShare.Droid.Resource.Animation.EnterFromRight;
+			global::Xamarin.Forms.Platform.Android.Resource.Animation.ExitToLeft = global::FoodShare.Droid.Resource.Animation.ExitToLeft;
+			global::Xamarin.Forms.Platform.Android.Resource.Animation.ExitToRight = global::FoodShare.Droid.Resource.Animation.ExitToRight;
 			global::Xamarin.Forms.Platform.Android.Resource.Animator.design_appbar_state_list_animator = global::FoodShare.Droid.Resource.Animator.design_appbar_state_list_animator;
 			global::Xamarin.Forms.Platform.Android.Resource.Animator.design_fab_hide_motion_spec = global::FoodShare.Droid.Resource.Animator.design_fab_hide_motion_spec;
 			global::Xamarin.Forms.Platform.Android.Resource.Animator.design_fab_show_motion_spec = global::FoodShare.Droid.Resource.Animator.design_fab_show_motion_spec;
@@ -1478,6 +1512,7 @@ namespace FoodShare.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.abc_search_view = global::FoodShare.Droid.Resource.Layout.abc_search_view;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.abc_select_dialog_material = global::FoodShare.Droid.Resource.Layout.abc_select_dialog_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.abc_tooltip = global::FoodShare.Droid.Resource.Layout.abc_tooltip;
+			global::Xamarin.Forms.Platform.Android.Resource.Layout.BottomTabLayout = global::FoodShare.Droid.Resource.Layout.BottomTabLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_bottom_navigation_item = global::FoodShare.Droid.Resource.Layout.design_bottom_navigation_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_bottom_sheet_dialog = global::FoodShare.Droid.Resource.Layout.design_bottom_sheet_dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_layout_snackbar = global::FoodShare.Droid.Resource.Layout.design_layout_snackbar;
@@ -1492,6 +1527,7 @@ namespace FoodShare.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_navigation_menu = global::FoodShare.Droid.Resource.Layout.design_navigation_menu;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_navigation_menu_item = global::FoodShare.Droid.Resource.Layout.design_navigation_menu_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_text_input_password_icon = global::FoodShare.Droid.Resource.Layout.design_text_input_password_icon;
+			global::Xamarin.Forms.Platform.Android.Resource.Layout.FlyoutContent = global::FoodShare.Droid.Resource.Layout.FlyoutContent;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.mtrl_layout_snackbar = global::FoodShare.Droid.Resource.Layout.mtrl_layout_snackbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.mtrl_layout_snackbar_include = global::FoodShare.Droid.Resource.Layout.mtrl_layout_snackbar_include;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.notification_action = global::FoodShare.Droid.Resource.Layout.notification_action;
@@ -1509,9 +1545,11 @@ namespace FoodShare.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.notification_template_media_custom = global::FoodShare.Droid.Resource.Layout.notification_template_media_custom;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.notification_template_part_chronometer = global::FoodShare.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.notification_template_part_time = global::FoodShare.Droid.Resource.Layout.notification_template_part_time;
+			global::Xamarin.Forms.Platform.Android.Resource.Layout.RootLayout = global::FoodShare.Droid.Resource.Layout.RootLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.select_dialog_item_material = global::FoodShare.Droid.Resource.Layout.select_dialog_item_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.select_dialog_multichoice_material = global::FoodShare.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.select_dialog_singlechoice_material = global::FoodShare.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::Xamarin.Forms.Platform.Android.Resource.Layout.ShellContent = global::FoodShare.Droid.Resource.Layout.ShellContent;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::FoodShare.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_bar_home_description = global::FoodShare.Droid.Resource.String.abc_action_bar_home_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_bar_up_description = global::FoodShare.Droid.Resource.String.abc_action_bar_up_description;
@@ -2925,16 +2963,16 @@ namespace FoodShare.Droid
 			public const int design_snackbar_out = 2130772000;
 			
 			// aapt resource value: 0x7F010021
-			public const int enterfromleft = 2130772001;
+			public const int EnterFromLeft = 2130772001;
 			
 			// aapt resource value: 0x7F010022
-			public const int enterfromright = 2130772002;
+			public const int EnterFromRight = 2130772002;
 			
 			// aapt resource value: 0x7F010023
-			public const int exittoleft = 2130772003;
+			public const int ExitToLeft = 2130772003;
 			
 			// aapt resource value: 0x7F010024
-			public const int exittoright = 2130772004;
+			public const int ExitToRight = 2130772004;
 			
 			static Animation()
 			{
@@ -5868,94 +5906,94 @@ namespace FoodShare.Droid
 			public const int abc_vector_test = 2131165273;
 			
 			// aapt resource value: 0x7F07005A
-			public const int avatar1 = 2131165274;
+			public const int Avatar1 = 2131165274;
 			
 			// aapt resource value: 0x7F07005B
-			public const int avatar10 = 2131165275;
+			public const int Avatar10 = 2131165275;
 			
 			// aapt resource value: 0x7F07005C
-			public const int avatar11 = 2131165276;
+			public const int Avatar11 = 2131165276;
 			
 			// aapt resource value: 0x7F07005D
-			public const int avatar12 = 2131165277;
+			public const int Avatar12 = 2131165277;
 			
 			// aapt resource value: 0x7F07005E
-			public const int avatar13 = 2131165278;
+			public const int Avatar13 = 2131165278;
 			
 			// aapt resource value: 0x7F07005F
-			public const int avatar14 = 2131165279;
+			public const int Avatar14 = 2131165279;
 			
 			// aapt resource value: 0x7F070060
-			public const int avatar15 = 2131165280;
+			public const int Avatar15 = 2131165280;
 			
 			// aapt resource value: 0x7F070061
-			public const int avatar16 = 2131165281;
+			public const int Avatar16 = 2131165281;
 			
 			// aapt resource value: 0x7F070062
-			public const int avatar17 = 2131165282;
+			public const int Avatar17 = 2131165282;
 			
 			// aapt resource value: 0x7F070063
-			public const int avatar18 = 2131165283;
+			public const int Avatar18 = 2131165283;
 			
 			// aapt resource value: 0x7F070064
-			public const int avatar19 = 2131165284;
+			public const int Avatar19 = 2131165284;
 			
 			// aapt resource value: 0x7F070065
-			public const int avatar2 = 2131165285;
+			public const int Avatar2 = 2131165285;
 			
 			// aapt resource value: 0x7F070066
-			public const int avatar20 = 2131165286;
+			public const int Avatar20 = 2131165286;
 			
 			// aapt resource value: 0x7F070067
-			public const int avatar21 = 2131165287;
+			public const int Avatar21 = 2131165287;
 			
 			// aapt resource value: 0x7F070068
-			public const int avatar22 = 2131165288;
+			public const int Avatar22 = 2131165288;
 			
 			// aapt resource value: 0x7F070069
-			public const int avatar23 = 2131165289;
+			public const int Avatar23 = 2131165289;
 			
 			// aapt resource value: 0x7F07006A
-			public const int avatar24 = 2131165290;
+			public const int Avatar24 = 2131165290;
 			
 			// aapt resource value: 0x7F07006B
-			public const int avatar25 = 2131165291;
+			public const int Avatar25 = 2131165291;
 			
 			// aapt resource value: 0x7F07006C
-			public const int avatar26 = 2131165292;
+			public const int Avatar26 = 2131165292;
 			
 			// aapt resource value: 0x7F07006D
-			public const int avatar27 = 2131165293;
+			public const int Avatar27 = 2131165293;
 			
 			// aapt resource value: 0x7F07006E
-			public const int avatar28 = 2131165294;
+			public const int Avatar28 = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int avatar29 = 2131165295;
+			public const int Avatar29 = 2131165295;
 			
 			// aapt resource value: 0x7F070070
-			public const int avatar3 = 2131165296;
+			public const int Avatar3 = 2131165296;
 			
 			// aapt resource value: 0x7F070071
-			public const int avatar30 = 2131165297;
+			public const int Avatar30 = 2131165297;
 			
 			// aapt resource value: 0x7F070072
-			public const int avatar4 = 2131165298;
+			public const int Avatar4 = 2131165298;
 			
 			// aapt resource value: 0x7F070073
-			public const int avatar5 = 2131165299;
+			public const int Avatar5 = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int avatar6 = 2131165300;
+			public const int Avatar6 = 2131165300;
 			
 			// aapt resource value: 0x7F070075
-			public const int avatar7 = 2131165301;
+			public const int Avatar7 = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int avatar8 = 2131165302;
+			public const int Avatar8 = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int avatar9 = 2131165303;
+			public const int Avatar9 = 2131165303;
 			
 			// aapt resource value: 0x7F070078
 			public const int avd_hide_password = 2131165304;
@@ -6931,7 +6969,7 @@ namespace FoodShare.Droid
 			public const int abc_tooltip = 2131427355;
 			
 			// aapt resource value: 0x7F0B001C
-			public const int bottomtablayout = 2131427356;
+			public const int BottomTabLayout = 2131427356;
 			
 			// aapt resource value: 0x7F0B001D
 			public const int browser_actions_context_menu_page = 2131427357;
@@ -6982,7 +7020,7 @@ namespace FoodShare.Droid
 			public const int design_text_input_password_icon = 2131427372;
 			
 			// aapt resource value: 0x7F0B002D
-			public const int flyoutcontent = 2131427373;
+			public const int FlyoutContent = 2131427373;
 			
 			// aapt resource value: 0x7F0B002E
 			public const int mtrl_layout_snackbar = 2131427374;
@@ -7036,7 +7074,7 @@ namespace FoodShare.Droid
 			public const int notification_template_part_time = 2131427390;
 			
 			// aapt resource value: 0x7F0B003F
-			public const int rootlayout = 2131427391;
+			public const int RootLayout = 2131427391;
 			
 			// aapt resource value: 0x7F0B0040
 			public const int select_dialog_item_material = 2131427392;
@@ -7048,7 +7086,7 @@ namespace FoodShare.Droid
 			public const int select_dialog_singlechoice_material = 2131427394;
 			
 			// aapt resource value: 0x7F0B0043
-			public const int shellcontent = 2131427395;
+			public const int ShellContent = 2131427395;
 			
 			// aapt resource value: 0x7F0B0044
 			public const int support_simple_spinner_dropdown_item = 2131427396;

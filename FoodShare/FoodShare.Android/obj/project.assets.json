@@ -2140,11 +2140,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Argon\\FoodShareApp\\FoodShare\\FoodShare.Android\\FoodShare.Android.csproj",
+      "projectUniqueName": "D:\\Argon\\New folder\\FoodShare\\FoodShare.Android\\FoodShare.Android.csproj",
       "projectName": "FoodShare.Android",
-      "projectPath": "D:\\Argon\\FoodShareApp\\FoodShare\\FoodShare.Android\\FoodShare.Android.csproj",
+      "projectPath": "D:\\Argon\\New folder\\FoodShare\\FoodShare.Android\\FoodShare.Android.csproj",
       "packagesPath": "C:\\Users\\ruvindras\\.nuget\\packages\\",
-      "outputPath": "D:\\Argon\\FoodShareApp\\FoodShare\\FoodShare.Android\\obj\\",
+      "outputPath": "D:\\Argon\\New folder\\FoodShare\\FoodShare.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2165,8 +2165,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "D:\\Argon\\FoodShareApp\\FoodShare\\FoodShare\\FoodShare.csproj": {
-              "projectPath": "D:\\Argon\\FoodShareApp\\FoodShare\\FoodShare\\FoodShare.csproj"
+            "D:\\Argon\\New folder\\FoodShare\\FoodShare\\FoodShare.csproj": {
+              "projectPath": "D:\\Argon\\New folder\\FoodShare\\FoodShare\\FoodShare.csproj"
             }
           }
         }

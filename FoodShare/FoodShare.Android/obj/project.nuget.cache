@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A1nyuXLuuTF1wcfQKJLaU2rBDQs3/gBVqO6fnCYW6YRF/64J8Tk/3ycn13UnY69yu/U7OeamK0ns+iSWxnSEyA==",
+  "dgSpecHash": "zfzLsknkTJ+snQZEvn005GIKyjDBGmNviFjlYkMxklBK9CB6zkNE9cEjMxyXQSe0hfow0ESZvrMFqkP3q7tc9Q==",
   "success": true,
-  "projectFilePath": "D:\\Argon\\FoodShareApp\\FoodShare\\FoodShare.Android\\FoodShare.Android.csproj",
+  "projectFilePath": "D:\\Argon\\New folder\\FoodShare\\FoodShare.Android\\FoodShare.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ruvindras\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\ruvindras\\.nuget\\packages\\plugin.currentactivity\\2.1.0.4\\plugin.currentactivity.2.1.0.4.nupkg.sha512",

@@ -1,0 +1,117 @@
+@string/appbar_scrolling_view_behavior;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\flyoutcontent.xml
+@string/appbar_scrolling_view_behavior;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\rootlayout.xml
+adaptive-icon;obj\Release\90\res\mipmap-anydpi-v26\icon.xml
+adaptive-icon;obj\Release\90\res\mipmap-anydpi-v26\icon_round.xml
+alpha;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\enterfromleft.xml
+alpha;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\exittoleft.xml
+android.support.design.widget.AppBarLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\flyoutcontent.xml
+android.support.design.widget.AppBarLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\rootlayout.xml
+android.support.design.widget.AppBarLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\shellcontent.xml
+android.support.design.widget.BottomNavigationView;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\bottomtablayout.xml
+android.support.design.widget.CoordinatorLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\flyoutcontent.xml
+android.support.design.widget.CoordinatorLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\rootlayout.xml
+android.support.design.widget.CoordinatorLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\shellcontent.xml
+android.support.design.widget.TabLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\rootlayout.xml
+android.support.design.widget.TabLayout;obj\Release\90\res\layout\tabbar.xml
+android.support.v7.widget.RecyclerView;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\flyoutcontent.xml
+android.support.v7.widget.Toolbar;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\rootlayout.xml
+android.support.v7.widget.Toolbar;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\shellcontent.xml
+android.support.v7.widget.Toolbar;obj\Release\90\res\layout\toolbar.xml
+animated-selector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox.xml
+animated-vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_checked_to_indeterminate_animation.xml
+animated-vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_checked_to_unchecked_animation.xml
+animated-vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_indeterminate_to_checked_animation.xml
+animated-vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_indeterminate_to_unchecked_animation.xml
+animated-vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_unchecked_to_checked_animation.xml
+animated-vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_unchecked_to_indeterminate_animation.xml
+attr;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\values\attrs.xml
+background;obj\Release\90\res\mipmap-anydpi-v26\icon.xml
+background;obj\Release\90\res\mipmap-anydpi-v26\icon_round.xml
+cache-path;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\41\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+color;obj\Release\90\res\values\colors.xml
+declare-styleable;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\values\attrs.xml
+dimen;obj\Release\90\res\values\dimens.xml
+enum;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\values\attrs.xml
+external-cache-path;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\41\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+external-path;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\41\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+foreground;obj\Release\90\res\mipmap-anydpi-v26\icon.xml
+foreground;obj\Release\90\res\mipmap-anydpi-v26\icon_round.xml
+FrameLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\bottomtablayout.xml
+group;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_checked.xml
+group;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_indeterminate.xml
+group;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_unchecked.xml
+item;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox.xml
+item;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\values\values.xml
+item;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\values\styles.xml
+item;obj\Release\90\res\values\styles.xml
+LinearLayout;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\bottomtablayout.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_indeterminate_to_checked_box_inner_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_indeterminate_to_checked_box_outer_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_indeterminate_to_checked_icon_null_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_checked_box_inner_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_checked_box_outer_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_checked_icon_null_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_checked_box_inner_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_checked_icon_null_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_unchecked_box_inner_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_unchecked_box_outer_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_unchecked_icon_null_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_box_inner_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_check_path_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_from_indeterminate_box_inner_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_from_indeterminate_check_path_merged_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_from_indeterminate_icon_null_animation.xml
+objectAnimator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_icon_null_animation.xml
+path;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_checked.xml
+path;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_indeterminate.xml
+path;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_unchecked.xml
+pathInterpolator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\interpolator\btn_checkbox_checked_animation_interpolator_0.xml
+pathInterpolator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\interpolator\btn_checkbox_checked_animation_interpolator_1.xml
+pathInterpolator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\interpolator\btn_checkbox_indeterminate_animation_interpolator_1.xml
+pathInterpolator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\interpolator\btn_checkbox_unchecked_animation_interpolator_0.xml
+pathInterpolator;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\interpolator\btn_checkbox_unchecked_animation_interpolator_1.xml
+paths;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\41\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+resources;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\values\attrs.xml
+resources;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\values\values.xml
+resources;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\values\styles.xml
+resources;obj\Release\90\res\values\colors.xml
+resources;obj\Release\90\res\values\dimens.xml
+resources;obj\Release\90\res\values\styles.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_indeterminate_to_checked_box_inner_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_indeterminate_to_checked_box_outer_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_indeterminate_to_checked_icon_null_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_checked_box_inner_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_checked_box_outer_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_checked_icon_null_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_checked_box_inner_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_checked_icon_null_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_unchecked_box_inner_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_unchecked_box_outer_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_indeterminate_from_unchecked_icon_null_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_box_inner_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_check_path_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_from_indeterminate_box_inner_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_from_indeterminate_check_path_merged_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_from_indeterminate_icon_null_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\anim\btn_checkbox_to_unchecked_icon_null_animation.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\enterfromleft.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\enterfromright.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\exittoleft.xml
+set;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\exittoright.xml
+style;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\values\styles.xml
+style;obj\Release\90\res\values\styles.xml
+target;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_checked_to_indeterminate_animation.xml
+target;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_checked_to_unchecked_animation.xml
+target;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_indeterminate_to_checked_animation.xml
+target;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_indeterminate_to_unchecked_animation.xml
+target;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_unchecked_to_checked_animation.xml
+target;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_unchecked_to_indeterminate_animation.xml
+transition;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox.xml
+translate;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\enterfromleft.xml
+translate;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\enterfromright.xml
+translate;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\exittoleft.xml
+translate;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\anim\exittoright.xml
+vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_checked.xml
+vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_indeterminate.xml
+vector;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\2\jl\res\drawable\btn_checkbox_unchecked.xml
+xamarin.forms.platform.android.appcompat.FormsViewPager;D:\Argon\New folder\FoodShare\FoodShare.Android\obj\Release\90\lp\42\jl\res\layout\rootlayout.xml
