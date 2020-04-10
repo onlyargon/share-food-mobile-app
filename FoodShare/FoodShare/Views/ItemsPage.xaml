@@ -37,29 +37,46 @@
             <CollectionView Grid.Row="0" x:Name="ItemsCollectionView" ItemsSource="{Binding Items}" Margin="0,20,0,0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Padding="10,5,10,5">
-                            <Frame BackgroundColor="White" BorderColor="White" HasShadow="True" CornerRadius="10" Padding="0" IsClippedToBounds="True" HeightRequest="100">
-                                <FlexLayout Direction="Row" JustifyContent="Start">
+                        <StackLayout Padding="15,10,15,5">
+                            <Frame BackgroundColor="White" BorderColor="White" HasShadow="True" CornerRadius="10" Padding="0" IsClippedToBounds="True" HeightRequest="120">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" Orientation="Horizontal">
 
-                                    <Image Aspect="AspectFill" WidthRequest="100" BackgroundColor="Wheat" Source="food.jpg">
-                                        <!--<Image.Source>
-                                            <FontImageSource Glyph="&#xf02e9;" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
-                                        </Image.Source>-->
-                                    </Image>
-                                    
-                                    <StackLayout Padding="10">
-                                        <Label Text="{Binding foodType}" 
-                                        d:Text="{Binding .}"
-                                        LineBreakMode="NoWrap" 
-                                        Style="{DynamicResource ListItemTextStyle}" 
-                                        FontSize="16" />
-                                        <Label Text="{Binding foodName}" 
-                                        d:Text="Item descripton"
-                                        LineBreakMode="NoWrap"
-                                        Style="{DynamicResource ListItemDetailTextStyle}"
-                                        FontSize="13" />
+                                        <Image Aspect="AspectFill" WidthRequest="120" Source="food.jpg"/>
+
+                                        <StackLayout Padding="5,5,10,10" VerticalOptions="Center">
+                                            <Label Text="{Binding foodName}" MaxLines="2" FontSize="Large" FontFamily="{StaticResource PoppinsSemiBold}" Padding="0" Margin="0"  LineBreakMode="TailTruncation"/>
+                                            <Label MaxLines="1" TextColor="Black">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Rs. "/>
+                                                        <Span Text="{Binding unitPrice}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding description}" MaxLines="2" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
                                     </StackLayout>
-                                </FlexLayout>
+                                    <StackLayout Grid.Column="1" Margin="5" Orientation="Vertical">
+                                        <Image >
+                                            <Image.Source>
+                                                <FontImageSource Glyph="&#xf02d5;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="BtnAddToFavourites_Tapped" NumberOfTapsRequired="1"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </Grid>
+                                <!--<FlexLayout JustifyContent="SpaceBetween">-->
+                                    
+                                <!--</FlexLayout>-->
+                                
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
                                 </Frame.GestureRecognizers>
@@ -68,7 +85,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Frame x:Name="FloatingActionButton" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Accent" Margin="0,0,12,10" HasShadow="True" CornerRadius="40" Padding="15">
+            <Frame x:Name="FloatingActionButton" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Accent" Margin="0,0,14,10" HasShadow="True" CornerRadius="40" Padding="15">
                 <CustomControls:FontIconLabel Text="{x:Static CustomControls:Icon.Plus}"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center"

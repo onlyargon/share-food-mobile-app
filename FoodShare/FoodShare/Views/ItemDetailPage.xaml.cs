@@ -1,16 +1,17 @@
-﻿using System;
-using System.ComponentModel;
+﻿using FoodShare.Models;
+using FoodShare.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using FoodShare.Models;
-using FoodShare.ViewModels;
-
 namespace FoodShare.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemDetailPage : ContentPage
     {
         ItemDetailViewModel viewModel;
@@ -28,12 +29,22 @@ namespace FoodShare.Views
 
             var item = new Data
             {
-                //Text = "Item 1",
-                //Description = "This is an item description."
+                foodName = "Item 1",
+                description = "This is an item description."
             };
 
             viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;
+        }
+
+        private async void OnBack_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
+
+        private void BtnAddToCart_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

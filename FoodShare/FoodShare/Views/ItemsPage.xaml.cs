@@ -36,6 +36,7 @@ namespace FoodShare.Views
                 var layout = (Frame)sender;
                 var item = (Data)layout.BindingContext;
                 await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+                //new NavigationPage(new ItemDetailPage());
             }
             catch (Exception ex)
             {
@@ -95,6 +96,11 @@ namespace FoodShare.Views
         private async void OnCart_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new CartPage()));
+        }
+
+        private void BtnAddToFavourites_Tapped(object sender, EventArgs e)
+        {
+            
         }
     }
 }

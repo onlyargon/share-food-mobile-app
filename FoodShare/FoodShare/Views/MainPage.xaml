@@ -8,6 +8,7 @@
             android:TabbedPage.ToolbarPlacement="Bottom"
             BarBackgroundColor="#EEEEEE"
             BarTextColor="#757575"
+            android:TabbedPage.IsSwipePagingEnabled="False"
             android:TabbedPage.BarItemColor="#C3C3C3"
             android:TabbedPage.BarSelectedItemColor="#757575"
             xmlns:views="clr-namespace:FoodShare.Views"

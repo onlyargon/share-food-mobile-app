@@ -22,6 +22,8 @@ namespace FoodShare.Views
         public NewItemPage()
         {
             InitializeComponent();
+            DatePrepared.MaximumDate = DateTime.Today;
+            DateExpiry.MinimumDate = DateTime.Today;
             BindingContext = itemsViewModel;
         }
 

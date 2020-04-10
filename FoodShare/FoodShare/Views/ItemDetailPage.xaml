@@ -2,16 +2,46 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:FoodShare.CustomControls"
              mc:Ignorable="d"
              x:Class="FoodShare.Views.ItemDetailPage"
-             Title="{Binding Title}">
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small"/>
-    </StackLayout>
-    
+            <Grid Grid.Row="0">
+                <Frame x:Name ="imageFrame" HorizontalOptions="FillAndExpand" BindingContext="{x:Reference imageFrame}" HeightRequest="{Binding WidthRequest}" HasShadow="False" Margin="0" Padding="0">
+                    <Image Source="food.jpg"/>
+                    <!--<Image Source = "{Binding downloadedImagePath}"/>-->
+                </Frame>
+
+            </Grid>
+
+            <StackLayout Grid.Row="1" Spacing="20" Padding="15">
+                <Label Text="{Binding Item.description}" FontSize="Medium" />
+            </StackLayout>
+
+            <Button Grid.Row="2" Margin="15" x:Name="BtnAddToCart" Text="Add to cart" TextColor="White" BackgroundColor="Accent" CornerRadius="5" Clicked="BtnAddToCart_Clicked"/>
+
+            <Frame x:Name="ItemNameBar" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="WhiteSmoke" HasShadow="False" CornerRadius="0" Margin="0,0,0,-1" WidthRequest="30" Padding="15,5,15,5" Opacity="0.9">
+                <Label Text="{Binding Item.foodName}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Title" TextColor="Black" MaxLines="2" LineBreakMode="TailTruncation"/>
+            </Frame>
+            
+            <Frame x:Name="BackButton" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" HasShadow="True" CornerRadius="15" WidthRequest="30" Margin="6" Padding="12" Opacity="0.75">
+                <CustomControls:FontIconLabel Text="{x:Static CustomControls:Icon.ArrowLeft}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            FontSize="28"
+                                            TextColor="Black" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBack_Clicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
