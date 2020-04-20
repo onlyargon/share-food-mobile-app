@@ -18,13 +18,13 @@ namespace FoodShare.Views
             InitializeComponent();
         }
 
-        //private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
-        //{
-        //    if (ToolbarItems.Count > 0)
-        //    {
-        //        DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.First(), $"{e.NewValue}", Color.Red, Color.White);
-        //    }
-        //}
+        private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            if (ToolbarItems.Count > 0)
+            {
+                DependencyService.Get<IToolbarItemBadgeService>().SetBadge(this, ToolbarItems.First(), $"{e.NewValue}", Color.Red, Color.White);
+            }
+        }
 
         private void OnLogout_Clicked(object sender, EventArgs e)
         {

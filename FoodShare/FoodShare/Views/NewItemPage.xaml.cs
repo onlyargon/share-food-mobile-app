@@ -8,6 +8,11 @@ using FoodShare.Models;
 using Xamarin.Essentials;
 using FoodShare.ViewModels;
 using static FoodShare.ViewModels.ItemsViewModel;
+using FoodShare.Models.GetUserProfileById;
+using System.Threading.Tasks;
+using FoodShare.Models.UpdateItem;
+using Plugin.Media;
+using System.IO;
 
 namespace FoodShare.Views
 {
@@ -17,66 +22,138 @@ namespace FoodShare.Views
     public partial class NewItemPage : ContentPage
     {
         ItemsViewModel itemsViewModel = new ItemsViewModel();
-        public Data Item { get; set; }
+        public ItemResult Item { get; set; }
+        private string itemImage;
+        public bool IsFromUpdate;
 
-        public NewItemPage()
+        public NewItemPage(bool isFromUpdate, ItemResult item)
         {
             InitializeComponent();
+            FoodName.Keyboard = Keyboard.Create(KeyboardFlags.CapitalizeWord);
             DatePrepared.MaximumDate = DateTime.Today;
             DateExpiry.MinimumDate = DateTime.Today;
+            IsFromUpdate = isFromUpdate;
             BindingContext = itemsViewModel;
+            Title = "New Item";
+            if (isFromUpdate)
+            {
+                if (item != null)
+                {
+                    Item = item;
+                    ShowCurrrentDetails(Item);
+                }
+            }
         }
 
+        public event EventHandler<object> CallbackEvent;
+
+        private void InvoceCallback()
+        {
+            CallbackEvent?.Invoke(this, EventArgs.Empty);
+        }
         async void Save_Clicked(object sender, EventArgs e)
         {
-            var IsValid = ValidateItem();
-
-            if (IsValid)
+            Button button = (Button)sender;
+            button.IsEnabled = false;
+            try
             {
-                FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
-                AddItemRequest addItemRequest = new AddItemRequest
-                {
-                    userId = OperationData.userId,
-                    foodType = foodType.description,
-                    foodName = FoodName.Text,
-                    unitPrice = UnitPrice.Text,
-                    quantity = Quantity.Text,
-                    description = Description.Text,
-                    preparedOn = DatePrepared.Date.Date.ToString(),
-                    expiryDate = DateExpiry.Date.Date.ToString()
-                };
-                //Item = new Data
-                //{
-                //    userId = OperationData.userId,
-                //    foodType = foodType.description,
-                //    foodName = FoodName.Text,
-                //    unitPrice = UnitPrice.Text,
-                //    quantity = Quantity.Text,
-                //    description = Description.Text,
-                //    preparedOn = DatePrepared.Date.Date.ToString(),
-                //    expiryDate = DateExpiry.Date.Date.ToString()
-                //};
+                var IsValid = ValidateItem();
 
-                var res = await itemsViewModel.AddItem(addItemRequest);
-
-                if (res != null)
+                if (IsValid && !IsFromUpdate)
                 {
-                    if (res.Code == 0)
+                    var addItemRequest = await SaveNewItemDetails();
+
+                    var res = await itemsViewModel.AddItem(addItemRequest);
+
+                    if (res != null)
                     {
-                        MessagingCenter.Send(this, "AddItem", Item);
-                        DisplayAlert("Message", "Item added successfully!", null, "OK");
-                        await Navigation.PopModalAsync();
+                        if (res.Code == 0)
+                        {
+                            InvoceCallback();
+                            DisplayAlert("Message", "Item added successfully!", null, "OK");
+                            await Navigation.PopModalAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert("Message", "Adding Item Failed. Please try again", null, "OK");
+                        }
                     }
                     else
                     {
                         await DisplayAlert("Message", "Adding Item Failed. Please try again", null, "OK");
                     }
                 }
-                else
+                else if(IsValid && IsFromUpdate)
                 {
-                    await DisplayAlert("Message", "Adding Item Failed. Please try again", null, "OK");
+                    var updateItemRequest = await SaveEditItemDetails();
+
+                    var res = await itemsViewModel.UpdateItem(updateItemRequest);
+
+                    if (res != null)
+                    {
+                        if (res.Code == 0)
+                        {
+                            InvoceCallback();
+                            DisplayAlert("Message", "Item updated successfully!", null, "OK");
+                            await Navigation.PopModalAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert("Message", "Updating Item Failed. Please try again", null, "OK");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Message", "Updating Item Failed. Please try again", null, "OK");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            }
+
+        }
+
+        async Task<AddItemRequest> SaveNewItemDetails()
+        {
+            FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
+            AddItemRequest addItemRequest = new AddItemRequest
+            {
+                userId = OperationData.userId,
+                foodType = foodType.description,
+                foodName = FoodName.Text,
+                unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
+                quantity = Quantity.Text,
+                description = Description.Text,
+                itemImage = itemImage != null ? Convert.ToBase64String(OperationData.ItemImage) : null,
+                preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
+                expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd")
+            };
+            return addItemRequest;
+        }
+
+        async Task<UpdateItemRequest> SaveEditItemDetails()
+        {
+            FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
+            UpdateItemRequest updateItemRequest = new UpdateItemRequest
+            {
+                id = Item.id,
+                userId = OperationData.userId,
+                foodType = foodType.description,
+                foodName = FoodName.Text,
+                unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
+                quantity = Quantity.Text,
+                description = Description.Text,
+                preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
+                expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd"),
+                isActive = DateExpiry.Date.Date >= DateTime.Today ? true : false
+            };
+            return updateItemRequest;
         }
 
         async void Cancel_Clicked(object sender, EventArgs e)
@@ -99,7 +176,11 @@ namespace FoodShare.Views
         {
             bool isItemCompleted = false;
 
-            if (string.IsNullOrEmpty(FoodName.Text))
+            if (FoodTypeSelector.SelectedItem == null)
+            {
+                FoodTypeErrorLabel.IsVisible = true;
+            }
+            else if (FoodTypeSelector.SelectedItem != null && string.IsNullOrEmpty(FoodName.Text))
             {
                 FoodNameErrorLabel.IsVisible = true;
             }
@@ -158,6 +239,147 @@ namespace FoodShare.Views
             else
             {
                 QuantityErrorLabel.IsVisible = false;
+            }
+        }
+
+        private void FoodTypeSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FoodTypeSelector.SelectedItem != null)
+            {
+                FoodTypeErrorLabel.IsVisible = false;
+            }
+        }
+
+        void ShowCurrrentDetails(ItemResult item)
+        {
+            foreach (var type in itemsViewModel.FoodTypes)
+            {
+                if(item.foodType.ToUpper() == type.description.ToUpper())
+                {
+                    FoodTypeSelector.SelectedItem = type;
+                }
+            }
+            Title = "Edit Item";
+            FoodName.Text = item.foodName;
+            UnitPrice.Text = Convert.ToDouble(item.unitPrice).ToString("N2");
+            Quantity.Text = item.quantity;
+            Description.Text = item.description;
+            DatePrepared.Date = Convert.ToDateTime(item.preparedOn);
+            DateExpiry.Date = Convert.ToDateTime(item.expiryDate);
+        }
+
+        private async void FoodImagePicker_Clicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.IsEnabled = false;
+
+            try
+            {
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
+                    return;
+                }
+                var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium,
+
+                });
+
+
+                if (file == null)
+                    return;
+
+                byte[] buffer = new byte[16 * 1024];
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    Stream stream = file.GetStream();
+                    file.Dispose();
+                    stream.CopyTo(ms);
+                    buffer = ms.ToArray();
+                }
+
+                OperationData.ItemImage = null;
+                OperationData.ItemImage = buffer;
+                FoodImagePlaceholder.Source = ImageSource.FromStream(() =>
+                {
+                    return new MemoryStream(OperationData.ItemImage);
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            }
+        }
+
+        public static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+
+        private async void FoodImageTaker_Clicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.IsEnabled = false;
+
+            try
+            {
+                await CrossMedia.Current.Initialize();
+
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    DisplayAlert("No Camera", ":( No camera available.", "OK");
+                    return;
+                }
+
+                var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                {
+                    Directory = "Sample",
+                    Name = "test.jpg"
+                });
+
+                if (file == null)
+                    return;
+
+                //await DisplayAlert("File Location", file.Path, "OK");
+
+
+                byte[] buffer = new byte[16 * 1024];
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    Stream stream = file.GetStream();
+                    file.Dispose();
+                    stream.CopyTo(ms);
+                    buffer = ms.ToArray();
+                }
+
+                OperationData.ItemImage = null;
+                OperationData.ItemImage = buffer;
+                FoodImagePlaceholder.Source = ImageSource.FromStream(() =>
+                {
+                    return new MemoryStream(OperationData.ItemImage);
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                button.IsEnabled = true;
             }
         }
     }

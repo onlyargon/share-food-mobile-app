@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="FoodShare.Views.NewItemPage"
-             Title="New Item">
+             BackgroundColor='White'>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Item 1" Priority="0" Clicked="Cancel_Clicked" >
@@ -17,53 +17,85 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <StackLayout Spacing="20" Padding="15" Margin="0,20,0,0">
-                    <FlexLayout Direction="Column">
-                        <Label Text=" Food type" FontSize="Medium" />
-                        <Picker x:Name="FoodTypeSelector" ItemsSource="{Binding FoodTypes}" ItemDisplayBinding="{Binding description}"/>
-                    </FlexLayout>
-                    <FlexLayout Direction="Column">
-                        <Label Text=" Food name" FontSize="Medium" />
-                        <Entry  x:Name="FoodName" TextChanged="FoodName_TextChanged"/>
-                        <Label x:Name="FoodNameErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
-                    </FlexLayout>
-                    <FlexLayout Direction="Column">
-                        <Label Text=" Unit price" FontSize="Medium" />
-                        <Entry x:Name="UnitPrice" Keyboard="Numeric" TextChanged="UnitPrice_TextChanged" Unfocused="UnitPrice_Unfocused"/>
-                        <Label x:Name="UnitPriceErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
-                    </FlexLayout>
-                    <FlexLayout Direction="Column">
-                        <Label Text=" Quantity" FontSize="Medium" />
-                        <Entry x:Name="Quantity" Keyboard="Numeric" TextChanged="Quantity_TextChanged"/>
-                        <Label x:Name="QuantityErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
-                    </FlexLayout>
-                    <FlexLayout Direction="Column">
-                        <Label Text=" Description" FontSize="Medium" />
-                        <Editor x:Name="Description" Keyboard="Text" AutoSize="TextChanges" MaxLength="200"/>
-                    </FlexLayout>
-                    <FlexLayout Direction="Column">
-                        <Label Text=" Prepared on" FontSize="Medium" />
-                        <DatePicker x:Name="DatePrepared"/>
-                    </FlexLayout>
-                    <FlexLayout Direction="Column" Margin="0,0,0,30">
-                        <Label Text=" Expiry date" FontSize="Medium" />
-                        <DatePicker x:Name="DateExpiry"/>
-                    </FlexLayout>
+        <Grid>
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Spacing="20" Padding="15" Margin="0,20,0,0">
+                        <FlexLayout Direction="Column">
+                            <Label Text=" Food image" FontSize="Medium" />
+                            <StackLayout Orientation="Horizontal">
+                                <Button x:Name="FoodImageTaker" Text="Take a photo" FontSize="14" TextColor="Accent" HeightRequest="40" BackgroundColor="WhiteSmoke" Padding="5" CornerRadius="5" Clicked="FoodImageTaker_Clicked">
+                                    <Button.ImageSource>
+                                        <FontImageSource Glyph="&#xf0edb;" Color="#C3C3C3" Size="20" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button x:Name="FoodImagePicker" Text="Select from gallery" FontSize="14" TextColor="Accent" HeightRequest="40" BackgroundColor="WhiteSmoke" Padding="5" CornerRadius="5" Clicked="FoodImagePicker_Clicked">
+                                    <Button.ImageSource>
+                                        <FontImageSource Glyph="&#xf087c;" Color="#C3C3C3" Size="20" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                    </Button.ImageSource>
+                                </Button>
+                            </StackLayout>
+                            <Frame BackgroundColor="WhiteSmoke" CornerRadius="10" HasShadow="False" Padding="0" WidthRequest="120" HeightRequest="120" Margin="0,15,0,0">
+                                <Grid>
+                                    <Image x:Name="FoodImagePlaceholder" Aspect="AspectFill">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                        </FlexLayout>
+                        
+                        <FlexLayout Direction="Column">
+                            <Label Text=" Food type" FontSize="Medium" />
+                            <Picker x:Name="FoodTypeSelector" ItemsSource="{Binding FoodTypes}" ItemDisplayBinding="{Binding description}" SelectedIndexChanged="FoodTypeSelector_SelectedIndexChanged"/>
+                            <Label x:Name="FoodTypeErrorLabel" Text="  *Select a food type" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                        </FlexLayout>
+                        <FlexLayout Direction="Column">
+                            <Label Text=" Food name" FontSize="Medium" />
+                            <Entry  x:Name="FoodName" TextChanged="FoodName_TextChanged" />
+                            <Label x:Name="FoodNameErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                        </FlexLayout>
+                        <FlexLayout Direction="Column">
+                            <Label Text=" Unit price" FontSize="Medium" />
+                            <Entry x:Name="UnitPrice" Keyboard="Numeric" TextChanged="UnitPrice_TextChanged" Unfocused="UnitPrice_Unfocused"/>
+                            <Label x:Name="UnitPriceErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                        </FlexLayout>
+                        <FlexLayout Direction="Column">
+                            <Label Text=" Quantity" FontSize="Medium" />
+                            <Entry x:Name="Quantity" Keyboard="Numeric" TextChanged="Quantity_TextChanged"/>
+                            <Label x:Name="QuantityErrorLabel" Text="  *This field is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                        </FlexLayout>
+                        <FlexLayout Direction="Column">
+                            <Label Text=" Description" FontSize="Medium" />
+                            <Editor x:Name="Description" Keyboard="Text" AutoSize="TextChanges" MaxLength="200" HorizontalOptions="FillAndExpand"/>
+                        </FlexLayout>
+                        <FlexLayout Direction="Column">
+                            <Label Text=" Prepared on" FontSize="Medium" />
+                            <DatePicker x:Name="DatePrepared"/>
+                        </FlexLayout>
+                        <FlexLayout Direction="Column" Margin="0,0,0,30">
+                            <Label Text=" Expiry date" FontSize="Medium" />
+                            <DatePicker x:Name="DateExpiry"/>
+                        </FlexLayout>
 
-
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="End" BackgroundColor="Accent">
+                        <Button x:Name="BtnClear" Text="Clear" TextColor="#757575" BackgroundColor="#C3C3C3" HorizontalOptions="FillAndExpand" Clicked="BtnClear_Clicked" />
+                        <Button x:Name="BtnProceed" Text="Proceed" TextColor="White" BackgroundColor="Accent" HorizontalOptions="FillAndExpand" Clicked="Save_Clicked"/>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <StackLayout IsVisible="{Binding IsBusy}" BackgroundColor="WhiteSmoke" Opacity="1" Orientation="Vertical" x:Name="BusyIndicator">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="50">
+                    <ActivityIndicator Color="Accent" IsRunning="true" />
+                    <Label x:Name="progressname" Text="Please wait ..." TextColor="Accent" VerticalOptions="Center" />
                 </StackLayout>
-                <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="End" BackgroundColor="Accent">
-                    <Button x:Name="BtnClear" Text="Clear" TextColor="#757575" BackgroundColor="#C3C3C3" HorizontalOptions="FillAndExpand" Clicked="BtnClear_Clicked" />
-                    <Button x:Name="BtnProceed" Text="Proceed" TextColor="White" BackgroundColor="Accent" HorizontalOptions="FillAndExpand" Clicked="Save_Clicked"/>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
-    
 </ContentPage>

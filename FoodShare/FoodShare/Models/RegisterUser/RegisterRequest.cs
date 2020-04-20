@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FoodShare.Models
+namespace FoodShare.Models.RegisterUser
 {
     public class RegisterRequest
     {

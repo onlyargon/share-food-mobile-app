@@ -2,17 +2,113 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:FoodShare.CustomControls"
              mc:Ignorable="d"
              x:Class="FoodShare.Views.PastOrdersPage">
     <NavigationPage.TitleView>
         <Label Text="Orders" FontFamily="{StaticResource PoppinsMedium}" TextColor="White" FontSize="24"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding LoadOrdersCommand}">
+            <Grid>
+                <StackLayout x:Name="NoOrdersView" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
+                    <CustomControls:FontIconLabel Text="{x:Static CustomControls:Icon.Receipt}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            FontSize="128"
+                                            TextColor="#C3C3C3" />
+                    <Label Text="You don't have any past orders yet" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#C3C3C3" FontSize="20"/>
+                </StackLayout>
+
+
+
+                <CollectionView  Grid.Column="0" Margin="10" x:Name="OrdersCollectionView" ItemsSource="{Binding Orders}" VerticalScrollBarVisibility="Always">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="5">
+                                <Frame BorderColor="White" HasShadow="False" CornerRadius="0" Padding="10" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="28"/>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="25"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="85"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Grid.Column="0" Grid.RowSpan="3" Padding="0" CornerRadius="8">
+                                            <Image Aspect="AspectFill" WidthRequest="70" >
+                                                <Image.Source>
+                                                    <x:String>food.jpg</x:String>
+                                                </Image.Source>
+                                                <!--<Image.Source>
+                                                <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                            </Image.Source>-->
+                                            </Image>
+                                        </Frame>
+
+                                        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding orderNumber}" MaxLines="1" FontSize="16" FontFamily="{StaticResource PoppinsSemiBold}" LineBreakMode="TailTruncation"/>
+
+                                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" MaxLines="1" LineBreakMode="TailTruncation" FontSize="Small">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Item : "/>
+                                                    <Span Text="{Binding foodName}" TextColor="Black" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" MaxLines="1" FontSize="14">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Unit price: "/>
+                                                    <Span Text="Rs. " TextColor="Black"/>
+                                                    <Span Text="{Binding unitPrice}" TextColor="Black" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" MaxLines="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Quantity: "/>
+                                                    <Span Text="{Binding qty}" TextColor="Black" FontSize="14" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                    <!--<Span Text="Seller Id: "/>
+                                                    <Span Text="{Binding sellerId}" TextColor="Black" FontSize="Default" FontFamily="{StaticResource PoppinsSemiBold}"/>-->
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" MaxLines="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Seller Id: "/>
+                                                    <Span Text="{Binding SellerId}" TextColor="Black" FontSize="14" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" MaxLines="1" LineBreakMode="TailTruncation">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Order price :  "/>
+                                                    <Span Text="Rs. " TextColor="Black"/>
+                                                    <Span Text="{Binding orderPrice}" TextColor="Black" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Button Text="Rate order" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" FontSize="12" TextColor="Accent" HorizontalOptions="End" BackgroundColor="WhiteSmoke" CornerRadius="5" Padding="2" Clicked="RateOrder_Clicked"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

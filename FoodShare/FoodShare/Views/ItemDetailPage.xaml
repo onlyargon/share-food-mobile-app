@@ -2,37 +2,127 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:FoodShare.CustomControls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:FoodShare.CustomControls" xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="FoodShare.Views.ItemDetailPage"
              NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Item 1" Priority="0">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xf0110;"
+                        Color="White" FontFamily="{StaticResource MaterialFontFamily}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <Frame x:Name ="imageFrame" HorizontalOptions="FillAndExpand" BindingContext="{x:Reference imageFrame}" HeightRequest="{Binding WidthRequest}" HasShadow="False" Margin="0" Padding="0">
-                    <Image Source="food.jpg"/>
-                    <!--<Image Source = "{Binding downloadedImagePath}"/>-->
-                </Frame>
+                    <Grid Grid.Row="0">
+                        <Frame x:Name ="imageFrame" HorizontalOptions="FillAndExpand" BindingContext="{x:Reference imageFrame}" HeightRequest="{Binding WidthRequest}" HasShadow="False" Margin="0" Padding="0">
+                            <Image >
+                                <Image.Source>
+                                    <x:String>food.jpg</x:String>
+                                </Image.Source>
+                                <!--<Image.Source>
+                                        <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                    </Image.Source>-->
+                            </Image>
+                        </Frame>
 
-            </Grid>
+                    </Grid>
 
-            <StackLayout Grid.Row="1" Spacing="20" Padding="15">
-                <Label Text="{Binding Item.description}" FontSize="Medium" />
-            </StackLayout>
+                    <StackLayout Grid.Row="1" Spacing="8" Padding="15,5,15,10" >
 
-            <Button Grid.Row="2" Margin="15" x:Name="BtnAddToCart" Text="Add to cart" TextColor="White" BackgroundColor="Accent" CornerRadius="5" Clicked="BtnAddToCart_Clicked"/>
+                        <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                            <Frame CornerRadius="5" Padding="4,3.5,4,0" >
+                                <Label Text="Test 3"  FontSize="14">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Seller:  " TextColor="Black"/>
+                                            <Span x:Name="SellerName" TextColor="Blue"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnSellerName_Clicked"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <Frame CornerRadius="5" Padding="4,3.5,4,0" BorderColor="Accent">
+                                <Label Text="Test 3" TextColor="Accent" FontSize="14">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Availability:  "/>
+                                            <Span x:Name="AvailableQty" Text="3"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Frame>
+                        </FlexLayout>
+                        
+                        
 
-            <Frame x:Name="ItemNameBar" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="WhiteSmoke" HasShadow="False" CornerRadius="0" Margin="0,0,0,-1" WidthRequest="30" Padding="15,5,15,5" Opacity="0.9">
-                <Label Text="{Binding Item.foodName}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Title" TextColor="Black" MaxLines="2" LineBreakMode="TailTruncation"/>
-            </Frame>
-            
-            <Frame x:Name="BackButton" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" HasShadow="True" CornerRadius="15" WidthRequest="30" Margin="6" Padding="12" Opacity="0.75">
+                        <Label x:Name="ItemDescription" FontSize="13" LineBreakMode="WordWrap"/>
+
+                        <FlexLayout Direction="RowReverse" JustifyContent="SpaceBetween">
+                            <Label MaxLines="1" FontSize="Small" HorizontalOptions="Start" VerticalOptions="Center"  TextColor="Black">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Best before: "/>
+                                        <Span x:Name="ItemExpiryDate"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label MaxLines="1" FontSize="Small" HorizontalOptions="End" VerticalOptions="Center"  TextColor="Black">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Prepared on: "/>
+                                        <Span x:Name="ItemPreparedOn"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </FlexLayout>
+                        
+                        <Label MaxLines="1" FontSize="Title" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Rs. "/>
+                                    <Span x:Name="ItemUnitPrice"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label MaxLines="1" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Quantity: "/>
+                                    <Span x:Name="QtyLabel" Text="1"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Stepper x:Name="QuantityStepper" Minimum="1" Increment="1" HorizontalOptions="Center" ValueChanged="Stepper_ValueChanged" VerticalOptions="Center"/>
+                    </StackLayout>
+
+
+                    <Frame x:Name="ItemNameBar" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="WhiteSmoke" HasShadow="False" CornerRadius="0" Margin="0,0,0,-1" WidthRequest="30" Padding="15,5,15,5" Opacity="0.9">
+                        <Label x:Name="ItemName" HorizontalOptions="Start" VerticalOptions="Center" FontSize="20" TextColor="Black" MaxLines="2" LineBreakMode="TailTruncation"/>
+                    </Frame>
+
+                    
+                </Grid>
+            </ScrollView>
+            <Frame x:Name="BackButton" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White" BorderColor="White" HasShadow="True" CornerRadius="15" WidthRequest="30" Margin="6" Padding="12" Opacity="0.75">
                 <CustomControls:FontIconLabel Text="{x:Static CustomControls:Icon.ArrowLeft}"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center"
@@ -42,6 +132,14 @@
                     <TapGestureRecognizer Tapped="OnBack_Clicked"/>
                 </Frame.GestureRecognizers>
             </Frame>
+            <Button Grid.Row="1" Margin="15,0,15,5" x:Name="BtnAddToCart" Text="Add to cart" TextColor="White" BackgroundColor="Accent" CornerRadius="5" Clicked="BtnAddToCart_Clicked" VerticalOptions="End" IsVisible="True"/>
+
+            <StackLayout Grid.RowSpan="2" IsVisible="{Binding IsBusy}" BackgroundColor="White" Opacity="1" Orientation="Vertical" x:Name="BusyIndicator">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="50">
+                    <ActivityIndicator Color="Accent" IsRunning="true" />
+                    <Label x:Name="progressname" Text="Please wait ..." TextColor="Accent" VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

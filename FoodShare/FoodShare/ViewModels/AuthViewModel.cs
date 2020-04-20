@@ -1,4 +1,5 @@
 ﻿using FoodShare.Models;
+using FoodShare.Models.RegisterUser;
 using FoodShare.Services;
 using System;
 using System.Collections.Generic;

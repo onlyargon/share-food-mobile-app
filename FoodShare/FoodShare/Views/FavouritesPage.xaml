@@ -2,28 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:FoodShare.CustomControls"
              mc:Ignorable="d"
              x:Class="FoodShare.Views.FavouritesPage">
-
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Order="Primary" Text="Item 1" Priority="0">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource Glyph="&#xf0110;"
-                        Color="White" FontFamily="{StaticResource MaterialFontFamily}"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>-->
 
     <NavigationPage.TitleView>
         <Label Text="Favourites" FontFamily="{StaticResource PoppinsMedium}" TextColor="White" FontSize="24"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <!--<Stepper Value="0" Minimum="0" Maximum="99" Increment="1" HorizontalOptions="Center" VerticalOptions="End" ValueChanged="Stepper_ValueChanged" />-->
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <CustomControls:FontIconLabel Text="{x:Static CustomControls:Icon.HeartOutline}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            FontSize="128"
+                                            TextColor="#C3C3C3" />
+            <Label Text="You don't have any favourite items" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#C3C3C3" FontSize="20"/>
+            <!--<Stepper x:Name="QuantityStepper" Minimum="1" Increment="1" HorizontalOptions="Center" ValueChanged="Stepper_ValueChanged" VerticalOptions="Center"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

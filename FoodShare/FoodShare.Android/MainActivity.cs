@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
+using Rg.Plugins.Popup.Services;
 
 namespace FoodShare.Droid
 {
@@ -21,7 +23,8 @@ namespace FoodShare.Droid
 
             //var toolbar = this.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             //SetSupportActionBar(toolbar);
-
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            Forms.SetFlags("SwipeView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
@@ -31,6 +34,22 @@ namespace FoodShare.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override async void OnBackPressed()
+        {
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                // Do something if there are some pages in the `PopupStack`
+                if (PopupNavigation.PopupStack.Count > 0)
+                {
+                    await PopupNavigation.PopAllAsync();
+                }
+            }
+            else
+            {
+                // Do something if there are not any pages in the `PopupStack`
+            }
         }
     }
 }

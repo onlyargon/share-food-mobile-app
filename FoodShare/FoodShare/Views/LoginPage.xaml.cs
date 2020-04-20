@@ -54,7 +54,9 @@ namespace FoodShare.Views
                                 // Possible that device doesn't support secure storage on device.
                             }
                             OperationData.userId = res.data.Data.userId;
-                            Application.Current.MainPage = new MainPage();
+                            Application.Current.MainPage = new NavigationPage(new MainPage());
+
+                            //Application.Current.MainPage = new MainPage();
                         }
                         else
                         {

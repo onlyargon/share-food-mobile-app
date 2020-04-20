@@ -23,7 +23,7 @@ namespace FoodShare.Services
                 {
 
                     httpClient.BaseAddress = new Uri(Constants.BaseUrl);
-                    StringContent content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+                    StringContent content = new StringContent(requestBody, Encoding.UTF8, "application/json");
                     HttpResponseMessage result = await httpClient.PostAsync(url, content);
                     string response = await result.Content.ReadAsStringAsync();
                     data = JsonConvert.DeserializeObject<AuthResponse>(response);

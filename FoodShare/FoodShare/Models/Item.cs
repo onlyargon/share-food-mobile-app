@@ -31,5 +31,9 @@ namespace FoodShare.Models
         public string createdAt { get; set; }
         public string updatedAt { get; set; }
 
+        //additional props
+        public DateTime formattedPreparedOn { get; set; }
+        public DateTime formattedExpiryDate { get; set; }
+
     }
 }

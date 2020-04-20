@@ -10,6 +10,8 @@ using FoodShare.Views;
 using static FoodShare.Models.Constants;
 using FoodShare.Services;
 using System.Collections.Generic;
+using System.Windows.Input;
+using FoodShare.Models.UpdateItem;
 
 namespace FoodShare.ViewModels
 {
@@ -41,15 +43,9 @@ namespace FoodShare.ViewModels
             FoodTypes.Add(new FoodType { description = "Bakery" });
             FoodTypes.Add(new FoodType { description = "Rice" });
             FoodTypes.Add(new FoodType { description = "Sweets" });
-            //MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            //    {
-            //        var newItem = item as Item;
-            //        Items.Add(newItem);
-            //        //await DataStore.AddItemAsync(newItem);
-            //    });
         }
 
-        async Task ExecuteLoadItemsCommand()
+        public async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
@@ -58,9 +54,16 @@ namespace FoodShare.ViewModels
                 Items.Clear();
 
                 var res = await GetAllItems();
-                foreach (var item in res.Data)
+                if (res != null)
                 {
-                    Items.Add(item);
+                    if (res.Code == 0)
+                    {
+                        foreach (var item in res.Data)
+                        {
+                            item.unitPrice = Convert.ToDouble(item.unitPrice).ToString("N2");
+                            Items.Add(item);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -69,6 +72,7 @@ namespace FoodShare.ViewModels
             }
             finally
             {
+                IsRefreshing = false;
                 IsBusy = false;
             }
         }
@@ -86,6 +90,14 @@ namespace FoodShare.ViewModels
         {
             IsBusy = true;
             var res = await itemsAPI.AddItem(item);
+            IsBusy = false;
+            return res;
+        }
+
+        public async Task<UpdateItemResponse> UpdateItem(UpdateItemRequest item)
+        {
+            IsBusy = true;
+            var res = await itemsAPI.UpdateItem(item);
             IsBusy = false;
             return res;
         }

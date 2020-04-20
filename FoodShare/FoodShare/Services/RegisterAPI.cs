@@ -1,4 +1,5 @@
 ﻿using FoodShare.Models;
+using FoodShare.Models.RegisterUser;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

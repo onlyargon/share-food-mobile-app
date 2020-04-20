@@ -5,6 +5,8 @@ using FoodShare.Services;
 using FoodShare.Views;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Platform.Android;
+using FoodShare.Models;
+using System.Collections.ObjectModel;
 
 namespace FoodShare
 {
@@ -16,8 +18,8 @@ namespace FoodShare
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjM0NzgxQDMxMzgyZTMxMmUzMGZWSTlhdmRaVEpzLzYxNEtkTFNEVWs0d085RWMraW5KRUFkc2RTTGdTSnM9");
             InitializeComponent();
-            //DependencyService.Register<MockDataStore>();
-            
+            OperationData.CartItemList = new ObservableCollection<ItemResult>();
+
             if (!IsUserLoggedIn)
             {
                 MainPage = new NavigationPage(new LoginPage());

@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:FoodShare.CustomControls"
+             mc:Ignorable="d"
+             x:Class="FoodShare.Views.OrderConfirmationPage"
+             Title="Order Confirmation">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <ScrollView>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="330"/> <!--x:Name="OrdersCollectionViewRow"-->
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Order Details Section-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <CollectionView  Grid.Column="0" Margin="10" x:Name="OrdersCollectionView" ItemsSource="{Binding Orders}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="5">
+                                        <Frame BorderColor="White" HasShadow="False" CornerRadius="0" Padding="10" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="29"/>
+                                                    <RowDefinition Height="26"/>
+                                                    <RowDefinition Height="26"/>
+                                                    <RowDefinition Height="26"/>
+                                                    <RowDefinition Height="26"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="90"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Frame Grid.Column="0" Grid.RowSpan="3" Padding="0" CornerRadius="8">
+                                                    <Image Aspect="AspectFill" WidthRequest="70" >
+                                                        <Image.Source>
+                                                            <x:String>food.jpg</x:String>
+                                                        </Image.Source>
+                                                        <!--<Image.Source>
+                                                <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                            </Image.Source>-->
+                                                    </Image>
+                                                </Frame>
+
+                                                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding foodName}" MaxLines="1" FontSize="17" FontFamily="{StaticResource PoppinsSemiBold}" LineBreakMode="TailTruncation"/>
+
+                                                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MaxLines="1" LineBreakMode="TailTruncation">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Unit price: "/>
+                                                            <Span Text="Rs. " TextColor="Black"/>
+                                                            <Span Text="{Binding unitPrice}" TextColor="Black" FontSize="15" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" MaxLines="1">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Quantity: "/>
+                                                            <Span Text="{Binding numberOfItems}" TextColor="Black" FontSize="15" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" MaxLines="1">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Seller Id: "/>
+                                                            <Span Text="{Binding userId}" TextColor="Black" FontSize="15" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" MaxLines="1" LineBreakMode="TailTruncation">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Additional charges :  "/>
+                                                            <Span Text="Rs. " TextColor="Black"/>
+                                                            <Span Text="0.00" TextColor="Black" FontSize="15" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Button Text="Add Note" Grid.Row="4" Grid.Column="2" FontSize="12" TextColor="Accent" HorizontalOptions="EndAndExpand" BackgroundColor="WhiteSmoke" Padding="5,0,5,0" Clicked="AddNote_Tapped"/>
+                                                
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        
+                    </Grid>
+
+                    <!--Delivery Details Section-->
+                    <Frame Grid.Row="1" BackgroundColor="White" Margin="15" CornerRadius="0" HasShadow="False" Padding="0" IsVisible="False">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Text="Delivery details: " TextColor="#757575" FontSize="Medium" FontFamily="{StaticResource PoppinsSemiBold}" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
+                            <StackLayout Grid.Row="1">
+                                <Label Text="No.210/2," FontSize="Default" Margin="5,0,0,0"/>
+                                <Label Text="St. Mary's Road, Tudella" FontSize="Default" Margin="5,0,0,0"/>
+                                <Label Text="Ja-Ela" FontSize="Default" Margin="5,0,0,0"/>
+                                <Label Text="077-5969112" FontSize="Default" Margin="5,0,0,0"/>
+                            </StackLayout>
+                            <Button Grid.Row="2" Text="Change Address" Clicked="Change_Address_Clicked" BackgroundColor="White" BorderColor="Accent" BorderWidth="1" TextColor="Accent" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+                        </Grid>
+                    </Frame>
+                    
+                    <!--Payment Method Section-->
+                    <Frame Grid.Row="2" BackgroundColor="White" Margin="15" CornerRadius="0" HasShadow="False" Padding="0" IsVisible="False">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Text="Payment method: " TextColor="#757575" FontSize="Medium" FontFamily="{StaticResource PoppinsSemiBold}" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
+                            <StackLayout Grid.Row="1">
+                                <Picker x:Name="PaymentMethodSelector">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Cash on delivery</x:String>
+                                            <x:String>Pay by card</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                                </Picker>
+                                <Label Text="St. Mary's Road, Tudella" FontSize="Default" IsVisible="False"/>
+                                <Label Text="Ja-Ela" FontSize="Default" IsVisible="False"/>
+                                <Label Text="077-5969112" FontSize="Default" IsVisible="False"/>
+                            </StackLayout>
+                            <Button Grid.Row="2" Text="Change Credit / Debit Card" IsEnabled="False" BackgroundColor="White" BorderColor="Accent" BorderWidth="1" TextColor="Accent" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+                        </Grid>
+                    </Frame>
+
+                    <!--Order Summary Section-->
+                    <Frame Grid.Row="3" BackgroundColor="White" Margin="15" CornerRadius="0" HasShadow="False" Padding="0">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Text="Order summary: " TextColor="#757575" FontSize="Medium" FontFamily="{StaticResource PoppinsSemiBold}" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
+                            <StackLayout Grid.Row="1">
+                                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                    <Label Text="Sub total :  " FontSize="Default"/>
+                                    <Label FontSize="Default" HorizontalOptions="End">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Rs. " TextColor="Black"/>
+                                                <Span x:Name="SubTotal" TextColor="Black"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </FlexLayout>
+                                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                    <Label Text="Additional charges :  " FontSize="Default"/>
+                                    <Label FontSize="Default" HorizontalOptions="End">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Rs. " TextColor="Black"/>
+                                                <Span x:Name="AdditionalCharges" TextColor="Black"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </FlexLayout>
+                                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" IsVisible="False">
+                                    <Label Text="Delivery charge :  " FontSize="Default"/>
+                                    <Label FontSize="Default" HorizontalOptions="End">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Rs. " TextColor="Black"/>
+                                                <Span x:Name="DeliveryCharges" TextColor="Black"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </FlexLayout>
+                                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                    <Label Text="Total :  " FontSize="Medium" TextColor="Black" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                    <Label HorizontalOptions="End">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Rs. " TextColor="Black" FontSize="Medium"/>
+                                                <Span x:Name="Total" TextColor="Black" FontFamily="{StaticResource PoppinsSemiBold}" FontSize="Medium"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </FlexLayout>
+
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <Button Grid.Row="1" Text="Place Order" Clicked="PlaceOrder_Clicked" CornerRadius="5" BackgroundColor="Accent" TextColor="White" Margin="15,5,15,15" VerticalOptions="End"/>
+            <StackLayout Grid.RowSpan="2" IsVisible="{Binding IsBusy}" BackgroundColor="WhiteSmoke" Opacity="1" Orientation="Vertical" x:Name="BusyIndicator">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="50">
+                    <ActivityIndicator Color="Accent" IsRunning="true" />
+                    <Label x:Name="progressname" Text="Placing your order..." TextColor="Accent" VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

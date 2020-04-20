@@ -59,7 +59,7 @@
             <StackLayout IsVisible="{Binding IsBusy}" BackgroundColor="White" Opacity="1" Orientation="Vertical" x:Name="BusyIndicator">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="50">
                     <ActivityIndicator Color="Accent" IsRunning="true" />
-                    <Label x:Name="progressname" Text="Please wait ..." TextColor="Accent" VerticalOptions="Center" />
+                    <Label x:Name="progressname" Text="Logging in ..." TextColor="Accent" VerticalOptions="Center" />
                 </StackLayout>
             </StackLayout>
         </Grid>

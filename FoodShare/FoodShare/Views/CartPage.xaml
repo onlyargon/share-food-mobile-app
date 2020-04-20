@@ -2,25 +2,122 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:CustomControls="clr-namespace:FoodShare.CustomControls" xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
              mc:Ignorable="d"
              x:Class="FoodShare.Views.CartPage">
     <NavigationPage.TitleView>
         <Label Text="Cart" FontFamily="{StaticResource PoppinsMedium}" TextColor="White" FontSize="24"/>
     </NavigationPage.TitleView>
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Text="Item 1" Priority="0" Clicked="Cancel_Clicked" >
             <ToolbarItem.IconImageSource>
                 <FontImageSource Glyph="&#xf0156;"
                         Color="White" FontFamily="{StaticResource MaterialFontFamily}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <CollectionView Grid.Row="0" x:Name="CartList" Margin="10,15,10,15" ItemsSource="{Binding CartItemList}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" Padding="5">
+                                    <Frame BorderColor="White" HasShadow="True" CornerRadius="10" Padding="5" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="35"/>
+                                                <RowDefinition Height="35"/>
+                                                <RowDefinition Height="40"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="75"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Frame Grid.Column="0" Grid.RowSpan="2" Padding="0" CornerRadius="8">
+                                            <Image Aspect="AspectFill" WidthRequest="75" >
+                                                <Image.Source>
+                                                    <x:String>food.jpg</x:String>
+                                                </Image.Source>
+                                                <!--<Image.Source>
+                                                <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                            </Image.Source>-->
+                                            </Image>
+                                        </Frame>
+
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding foodName}" MaxLines="1" FontSize="Medium" FontFamily="{StaticResource PoppinsSemiBold}" LineBreakMode="TailTruncation"/>
+
+                                            <Label Grid.Row="1" Grid.Column="1" MaxLines="1" LineBreakMode="TailTruncation">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Unit price: "/>
+                                                        <Span Text="Rs. " TextColor="Black"/>
+                                                        <Span Text="{Binding unitPrice}" TextColor="Black" FontSize="Default" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Row="2" Grid.Column="0" MaxLines="1" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Qty: "/>
+                                                    <Span BindingContext="{x:Reference QtyStepper}" Text="{Binding Value}" TextColor="Black" FontSize="14" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        <CustomControls:CustomStepper x:Name="QtyStepper" Grid.Row="2" Grid.Column="1" WidthRequest="130" Maximum="{Binding quantity}" Minimum="1" Value="{Binding numberOfItems}" ValueChanged="CustomStepper_ValueChanged"/>
+                                        <CustomControls:FontIconLabel Grid.Column="2" HorizontalOptions="End" Text="{x:Static CustomControls:Icon.Delete}" FontSize="28" TextColor="#C3C3C3">
+                                                <CustomControls:FontIconLabel.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="Delete_Tapped"/>
+                                                </CustomControls:FontIconLabel.GestureRecognizers>
+                                            </CustomControls:FontIconLabel>
+
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            <CustomControls:CustomFrame x:Name="CartTotalSection" Grid.Row="1" Padding="20,10,20,5" HasShadow="True" BackgroundColor="#ffffff" CornerRadius="30,30,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                    <StackLayout Orientation="Vertical" Spacing="0">
+                        <Label Text="Total" FontSize="Large" Margin="0,0,0,-5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Total   "/>
+                                    <Span Text="Rs. " TextColor="Black"/>
+                                    <Span x:Name="TotalLabel" FontSize="Large" TextColor="Black" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label x:Name="TotalNumOfItems" FontSize="Medium"/>
+                    </StackLayout>
+                    
+                    <Button Text="checkout" BackgroundColor="Accent" TextColor="White" CornerRadius="5" WidthRequest="120" Margin="0,0,0,15" Clicked="Checkout_Clicked"/>
+                </FlexLayout>
+            </CustomControls:CustomFrame>
+            <StackLayout Grid.Row="0" Grid.RowSpan="2" Padding="10,15,10,15" HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout x:Name="EmptyCart" IsVisible="False">
+                    <CustomControls:FontIconLabel Text="{x:Static CustomControls:Icon.CartOutline}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            FontSize="128"
+                                            TextColor="#C3C3C3" />
+                    <Label Text="Your cart is empty" TextColor="#C3C3C3" HorizontalTextAlignment="Center" FontSize="20"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<custom:CustomPopup  xmlns:custom="clr-namespace:FoodShare.CustomControls" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+                     mc:Ignorable="d"
+             x:Class="FoodShare.Views.OrderItemStarRatingPopup">
+    <custom:CustomPopup.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </custom:CustomPopup.Animation>
+    <custom:CustomPopup.Content>
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="330"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="330" HeightRequest="300">
+                <Frame BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="10" Margin="5" Padding="20,20,20,10">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                        <Label VerticalOptions="Start" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"  FontFamily="{StaticResource PoppinsMedium}" MaxLines="3" LineBreakMode="WordWrap" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="How was your order of ' "/>
+                                    <Span x:Name="FoodName"/>
+                                    <Span Text="' ?"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <rating:SfRating x:Name="RatingView" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" ItemCount="5" Precision="Standard" ItemSize="25" ItemSpacing="10">
+                            <rating:SfRating.RatingSettings>
+                                <rating:SfRatingSettings RatedFill="Gold" UnRatedFill="White" RatedStroke="Gold" UnRatedStroke="Gold" RatedStrokeWidth="4" UnRatedStrokeWidth="3" Focused="SfRatingSettings_Focused"/>
+                            </rating:SfRating.RatingSettings>
+                        </rating:SfRating>
+
+                        <inputLayout:SfTextInputLayout 
+                    x:Name="UserNameEntryInput"
+                    ContainerType="Outlined" 
+                    Hint="Feedback  ">
+                            <Editor x:Name="OrderCommentEditor" PlaceholderColor="#707070" Keyboard="Text" TextChanged="OrderCommentEditor_TextChanged"/>
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16">
+                                    <inputLayout:LabelStyle.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                    </inputLayout:LabelStyle.FontFamily>
+                                </inputLayout:LabelStyle>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <inputLayout:LabelStyle FontSize="10">
+                                    <inputLayout:LabelStyle.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
+                                    </inputLayout:LabelStyle.FontFamily>
+                                </inputLayout:LabelStyle>
+                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                        </inputLayout:SfTextInputLayout>
+
+                        <FlexLayout HorizontalOptions="End" VerticalOptions="End" Direction="Row" JustifyContent="SpaceBetween" WidthRequest="180"  HeightRequest="25">
+                            <Button Text="May be later" TextColor="#C3C3C3" BackgroundColor="White" FontFamily="{StaticResource PoppinsMedium}" FontSize="13" Padding="0" Margin="0" WidthRequest="120" Clicked="MaybeLater_Clicked"/>
+                            <Button x:Name="SubmitButton" Text="Submit" TextColor="Accent" BackgroundColor="White" FontFamily="{StaticResource PoppinsMedium}" FontSize="13" Padding="2" IsEnabled="False" Clicked="Submit_Clicked"/>
+                        </FlexLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Frame IsVisible="{Binding IsBusy}" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="10" Margin="5" Padding="20,20,20,10">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="50">
+                    <ActivityIndicator Color="Accent" IsRunning="true" />
+                    <Label x:Name="progressname" Text="Please wait ..." TextColor="Accent" VerticalOptions="Center" />
+                </StackLayout>
+            </Frame>
+        </Grid>
+        </custom:CustomPopup.Content>
+</custom:CustomPopup>
