@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static FoodShare.Models.OrderRating.OrderRatingResponse;
 
 namespace FoodShare.Views
 {
@@ -22,9 +23,20 @@ namespace FoodShare.Views
             InitializeComponent();
             _ = LoadOrders();
             BindingContext = viewModel;
+
+            MessagingCenter.Subscribe<RatingData>(this, "ORDER_RATED", (sender) =>
+            {
+                LoadOrders();
+            });
         }
 
-        async Task LoadOrders()
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<RatingData>(this, "ORDER_RATED");
+        }
+
+        public async Task LoadOrders()
         {
             var res = await viewModel.ExecuteLoadOrdersCommand();
             if (res != null)
@@ -73,6 +85,11 @@ namespace FoodShare.Views
             {
                 button.IsEnabled = true;
             }
+        }
+
+        private void PastOrders_Refreshed(object sender, EventArgs e)
+        {
+            _ = LoadOrders();
         }
     }
 }

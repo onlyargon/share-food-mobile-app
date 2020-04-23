@@ -77,5 +77,36 @@ namespace FoodShare.Services
                 }
             }
         }
+
+        public async Task<GetFavouriteItemsByUserIdResponse> GetFavouriteItemsByUserId(GetFavouriteItemsByUserIdRequest user)
+        {
+            string url = $"/item/fav-item-list";
+            var requestBody = await Task.Run(() => JsonConvert.SerializeObject(user));
+            using (HttpClient httpClient = new HttpClient())
+            {
+                GetFavouriteItemsByUserIdResponse data = new GetFavouriteItemsByUserIdResponse();
+                try
+                {
+                    var authHeader = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("auth_token"));
+                    httpClient.DefaultRequestHeaders.Authorization = authHeader;
+                    httpClient.BaseAddress = new Uri(Constants.BaseUrl);
+                    StringContent content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                    HttpResponseMessage result = await httpClient.PostAsync(url, content);
+                    string response = await result.Content.ReadAsStringAsync();
+                    data = JsonConvert.DeserializeObject<GetFavouriteItemsByUserIdResponse>(response);
+
+                    if (result.IsSuccessStatusCode && result.StatusCode == HttpStatusCode.OK)
+                    {
+                        return data;
+                    }
+
+                    return null;
+                }
+                catch (Exception exp)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

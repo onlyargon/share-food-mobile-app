@@ -47,14 +47,14 @@
                                             <ColumnDefinition Width="30"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Aspect="AspectFill" WidthRequest="120">
-                                            <Image.Source>
-                                                <x:String>food.jpg</x:String>
-                                            </Image.Source>
-                                            <!--<Image.Source>
-                                                <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
-                                            </Image.Source>-->
-                                        </Image>
+                                        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Glyph="&#xf025a;" Size="80" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Image Aspect="AspectFill" WidthRequest="120" Source="{Binding itemImage}"/>
+                                        </Grid>
 
                                         <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="5,7,5,7" VerticalOptions="CenterAndExpand" RowSpacing="3">
                                             <Grid.RowDefinitions>
@@ -76,7 +76,15 @@
                                         </Grid>
 
                                         <StackLayout Grid.Column="2" Margin="5" Orientation="Vertical">
-                                            <Image >
+                                            <Image IsVisible="{Binding isFavorite}">
+                                                <Image.Source>
+                                                    <FontImageSource Glyph="&#xf02d1;" Size="20" Color="#F25278" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                                </Image.Source>
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="BtnAddToFavourites_Tapped" NumberOfTapsRequired="1"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image IsVisible="{Binding isNotFavorite}">
                                                 <Image.Source>
                                                     <FontImageSource Glyph="&#xf02d5;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
                                                 </Image.Source>

@@ -84,29 +84,6 @@
                             </inputLayout:LabelStyle>
                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                     </inputLayout:SfTextInputLayout>
-
-                    <inputLayout:SfTextInputLayout 
-                        x:Name="ContactEntryInput"
-                        ContainerType="Outlined" 
-                        Hint="Contact number    "
-                        EnablePasswordVisibilityToggle="False">
-                        <Entry  x:Name="ContactEntry" IsPassword="True" PlaceholderColor="#707070" TextChanged="ContactEntry_TextChanged" Keyboard="Telephone"/>
-                        <inputLayout:SfTextInputLayout.HintLabelStyle>
-                            <inputLayout:LabelStyle FontSize="16">
-                                <inputLayout:LabelStyle.FontFamily>
-                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
-                                </inputLayout:LabelStyle.FontFamily>
-                            </inputLayout:LabelStyle>
-                        </inputLayout:SfTextInputLayout.HintLabelStyle>
-                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                            <inputLayout:LabelStyle FontSize="10">
-                                <inputLayout:LabelStyle.FontFamily>
-                                    <OnPlatform x:TypeArguments="x:String" iOS="Poppins" Android="Poppins-Regular.ttf#Regular"/>
-                                </inputLayout:LabelStyle.FontFamily>
-                            </inputLayout:LabelStyle>
-                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    </inputLayout:SfTextInputLayout>
-
                     <FlexLayout Direction="Column">
                         <Label Text=" Account type" Margin="0,10,0,20"/>
 

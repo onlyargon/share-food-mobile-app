@@ -54,7 +54,16 @@ namespace FoodShare.Views
                                 // Possible that device doesn't support secure storage on device.
                             }
                             OperationData.userId = res.data.Data.userId;
-                            Application.Current.MainPage = new NavigationPage(new MainPage());
+
+                            if (!res.data.Data.isProfileCompleted)
+                            {
+                                Application.Current.MainPage = new NavigationPage(new CompleteProfilePage(false, null));
+                            }
+                            else
+                            {
+                                App.IsProfileCompleted = true;
+                                Application.Current.MainPage = new NavigationPage(new MainPage());
+                            }
 
                             //Application.Current.MainPage = new MainPage();
                         }

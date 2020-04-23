@@ -13,6 +13,8 @@ using FoodShare.ViewModels;
 using FoodShare.Services;
 using Xamarin.Essentials;
 using FoodShare.Models.Favourites;
+using FoodShare.Models.GetAllItems;
+using static FoodShare.Models.Favourites.GetFavouriteItemsByUserIdResponse;
 
 namespace FoodShare.Views
 {
@@ -155,6 +157,24 @@ namespace FoodShare.Views
                     {
                         if (res.Code == 0)
                         {
+                            FavouriteItems favItem = new FavouriteItems()
+                            {
+                                id = item.id,
+                                userId = item.userId,
+                                foodType = item.foodType,
+                                foodName = item.foodName,
+                                quantity = item.quantity,
+                                description = item.description,
+                                unitPrice = item.unitPrice,
+                                itemImage = item.itemImage,
+                                preparedOn = item.preparedOn,
+                                expiryDate = item.expiryDate,
+                                isActive = item.isActive,
+                                isDeleted = item.isDeleted,
+                                createdAt = item.createdAt,
+                                updatedAt = item.updatedAt
+                            };
+                            OperationData.FavouriteItemList.Add(favItem);
                             await DisplayAlert("Message", item.foodName + " added to favourites!", null, "OK");
                         }
                         else
@@ -192,6 +212,13 @@ namespace FoodShare.Views
                     {
                         if (res.Code == 0)
                         {
+                            foreach (var favItem in OperationData.FavouriteItemList)
+                            {
+                                if(item.id == favItem.id)
+                                {
+                                    OperationData.FavouriteItemList.Remove(favItem);
+                                }
+                            }
                             await DisplayAlert("Message", item.foodName + " removed from favourites", null, "OK");
                         }
                         else

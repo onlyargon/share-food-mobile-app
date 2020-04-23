@@ -47,14 +47,14 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <Frame Grid.Column="0" Grid.RowSpan="3" Padding="0" CornerRadius="8">
-                                                    <Image Aspect="AspectFill" WidthRequest="70" >
-                                                        <Image.Source>
-                                                            <x:String>food.jpg</x:String>
-                                                        </Image.Source>
-                                                        <!--<Image.Source>
-                                                <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
-                                            </Image.Source>-->
-                                                    </Image>
+                                                    <Grid>
+                                                        <Image WidthRequest="70">
+                                                            <Image.Source>
+                                                                <FontImageSource Glyph="&#xf025a;" Size="80" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                                            </Image.Source>
+                                                        </Image>
+                                                        <Image WidthRequest="70" Aspect="AspectFill" Source="{Binding itemImage}"/>
+                                                    </Grid>
                                                 </Frame>
 
                                                 <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding foodName}" MaxLines="1" FontSize="17" FontFamily="{StaticResource PoppinsSemiBold}" LineBreakMode="TailTruncation"/>

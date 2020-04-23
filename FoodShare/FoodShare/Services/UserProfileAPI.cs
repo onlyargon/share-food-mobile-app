@@ -1,5 +1,7 @@
 ﻿using FoodShare.Models;
 using FoodShare.Models.GetUserProfileById;
+using FoodShare.Models.UserProfile.CreateUserProfile;
+using FoodShare.Models.UserProfile.UpdateUserProfile;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,6 +32,68 @@ namespace FoodShare.Services
                     HttpResponseMessage result = await httpClient.PostAsync(url, content);
                     string response = await result.Content.ReadAsStringAsync();
                     data = JsonConvert.DeserializeObject<GetUserProfileByIdResponse>(response);
+
+                    if (result.IsSuccessStatusCode && result.StatusCode == HttpStatusCode.OK)
+                    {
+                        return data;
+                    }
+
+                    return null;
+                }
+                catch (Exception exp)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public async Task<CreateUserProfileResponse> CreateUserProfile(CreateUserProfileRequest user)
+        {
+            string url = $"/users/create";
+            var requestBody = await Task.Run(() => JsonConvert.SerializeObject(user));
+            using (HttpClient httpClient = new HttpClient())
+            {
+                CreateUserProfileResponse data = new CreateUserProfileResponse();
+                try
+                {
+                    var authHeader = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("auth_token"));
+                    httpClient.DefaultRequestHeaders.Authorization = authHeader;
+                    httpClient.BaseAddress = new Uri(Constants.BaseUrl);
+                    StringContent content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                    HttpResponseMessage result = await httpClient.PostAsync(url, content);
+                    string response = await result.Content.ReadAsStringAsync();
+                    data = JsonConvert.DeserializeObject<CreateUserProfileResponse>(response);
+
+                    if (result.IsSuccessStatusCode && result.StatusCode == HttpStatusCode.OK)
+                    {
+                        return data;
+                    }
+
+                    return null;
+                }
+                catch (Exception exp)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public async Task<CreateUserProfileResponse> UpdateUserProfile(UpdateUserProfileRequest user)
+        {
+            string url = $"/users/update";
+            var requestBody = await Task.Run(() => JsonConvert.SerializeObject(user));
+            using (HttpClient httpClient = new HttpClient())
+            {
+                CreateUserProfileResponse data = new CreateUserProfileResponse();
+                try
+                {
+                    var authHeader = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("auth_token"));
+                    httpClient.DefaultRequestHeaders.Authorization = authHeader;
+                    httpClient.BaseAddress = new Uri(Constants.BaseUrl);
+                    StringContent content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                    HttpResponseMessage result = await httpClient.PostAsync(url, content);
+                    string response = await result.Content.ReadAsStringAsync();
+                    data = JsonConvert.DeserializeObject<CreateUserProfileResponse>(response);
 
                     if (result.IsSuccessStatusCode && result.StatusCode == HttpStatusCode.OK)
                     {

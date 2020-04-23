@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
+using static FoodShare.Models.Favourites.GetFavouriteItemsByUserIdResponse;
 
 namespace FoodShare.Models
 {
@@ -13,6 +15,7 @@ namespace FoodShare.Models
         }
         public static int userId { get; set; }
         public static ObservableCollection<ItemResult> CartItemList { get; set; }
+        public static ObservableCollection<FavouriteItems> FavouriteItemList { get; set; }
         public static byte[] ItemImage { get; set; }
     }
 }

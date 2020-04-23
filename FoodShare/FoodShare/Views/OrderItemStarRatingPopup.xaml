@@ -37,9 +37,9 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <rating:SfRating x:Name="RatingView" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" ItemCount="5" Precision="Standard" ItemSize="25" ItemSpacing="10">
+                        <rating:SfRating x:Name="RatingView" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" ItemCount="5" Precision="Standard" ItemSize="25" ItemSpacing="10" ValueChanged="RatingView_ValueChanged">
                             <rating:SfRating.RatingSettings>
-                                <rating:SfRatingSettings RatedFill="Gold" UnRatedFill="White" RatedStroke="Gold" UnRatedStroke="Gold" RatedStrokeWidth="4" UnRatedStrokeWidth="3" Focused="SfRatingSettings_Focused"/>
+                                <rating:SfRatingSettings RatedFill="Gold" UnRatedFill="White" RatedStroke="Gold" UnRatedStroke="Gold" RatedStrokeWidth="4" UnRatedStrokeWidth="3"/>
                             </rating:SfRating.RatingSettings>
                         </rating:SfRating>
 

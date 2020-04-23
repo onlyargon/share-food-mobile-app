@@ -15,6 +15,7 @@ namespace FoodShare.ViewModels
         private PlaceOrderAPI placeOrderAPI = new PlaceOrderAPI();
         public ObservableCollection<ItemResult> Orders { get; set; }
         public ObservableCollection<ItemResult> CartItemList { get; set; }
+
         public CartViewModel()
         {
             Orders = new ObservableCollection<ItemResult>();

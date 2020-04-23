@@ -84,10 +84,6 @@ namespace FoodShare.Views
                         ConfirmPasswordEntryInput.ErrorText = "Please confirm your password";
                         ConfirmPasswordEntryInput.HasError = true;
                     }
-                    else if(ContactEntryInput.HasError == true)
-                    {
-
-                    }
                     else
                     {
                         UserNameEntry.Text = UserNameEntry.Text.Trim();
@@ -151,23 +147,6 @@ namespace FoodShare.Views
             else
             {
                 ConfirmPasswordEntryInput.HasError = false;
-            }
-        }
-
-        private void ContactEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(ContactEntry.Text))
-            {
-                ContactEntry.Text = ConfirmPasswordEntry.Text.Trim();
-            }
-            else if (ContactEntry.Text.Length != 10)
-            {
-                ContactEntryInput.ErrorText = "The contact number should contain 10 digits";
-                ContactEntryInput.HasError = true;
-            }
-            else
-            {
-                ContactEntryInput.HasError = false;
             }
         }
     }

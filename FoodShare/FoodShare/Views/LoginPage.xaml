@@ -10,6 +10,7 @@
     <ContentPage.Content>
         <Grid>
             <StackLayout VerticalOptions="Center" Margin="20">
+                <Image Source="logo.png" HorizontalOptions="Center" WidthRequest="150" Margin="0,0,0,50"/>
                 <inputLayout:SfTextInputLayout 
                     x:Name="UserNameEntryInput"
                     ContainerType="Outlined" 

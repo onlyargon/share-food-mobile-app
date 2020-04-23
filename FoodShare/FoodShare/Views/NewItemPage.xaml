@@ -26,7 +26,7 @@
                     </Grid.RowDefinitions>
                     <StackLayout Spacing="20" Padding="15" Margin="0,20,0,0">
                         <FlexLayout Direction="Column">
-                            <Label Text=" Food image" FontSize="Medium" />
+                            <Label Text=" Food image" FontSize="Medium" Margin="0,0,0,10"/>
                             <StackLayout Orientation="Horizontal">
                                 <Button x:Name="FoodImageTaker" Text="Take a photo" FontSize="14" TextColor="Accent" HeightRequest="40" BackgroundColor="WhiteSmoke" Padding="5" CornerRadius="5" Clicked="FoodImageTaker_Clicked">
                                     <Button.ImageSource>
@@ -43,7 +43,7 @@
                                 <Grid>
                                     <Image x:Name="FoodImagePlaceholder" Aspect="AspectFill">
                                         <Image.Source>
-                                            <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                            <FontImageSource Glyph="&#xf025a;" Size="80" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
                                         </Image.Source>
                                     </Image>
                                 </Grid>
@@ -93,7 +93,8 @@
             <StackLayout IsVisible="{Binding IsBusy}" BackgroundColor="WhiteSmoke" Opacity="1" Orientation="Vertical" x:Name="BusyIndicator">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="50">
                     <ActivityIndicator Color="Accent" IsRunning="true" />
-                    <Label x:Name="progressname" Text="Please wait ..." TextColor="Accent" VerticalOptions="Center" />
+                    <Label x:Name="progressname" Text="Please wait ..." TextColor="Accent" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="It may take some time to upload your image" TextColor="Accent" VerticalOptions="Center" HorizontalOptions="Center"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

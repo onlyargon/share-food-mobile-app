@@ -7,6 +7,7 @@ using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Platform.Android;
 using FoodShare.Models;
 using System.Collections.ObjectModel;
+using static FoodShare.Models.Favourites.GetFavouriteItemsByUserIdResponse;
 
 namespace FoodShare
 {
@@ -14,15 +15,21 @@ namespace FoodShare
     {
 
         public static bool IsUserLoggedIn { get; set; }
+        public static bool IsProfileCompleted { get; set; } = false;
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjM0NzgxQDMxMzgyZTMxMmUzMGZWSTlhdmRaVEpzLzYxNEtkTFNEVWs0d085RWMraW5KRUFkc2RTTGdTSnM9");
             InitializeComponent();
             OperationData.CartItemList = new ObservableCollection<ItemResult>();
+            OperationData.FavouriteItemList = new ObservableCollection<FavouriteItems>();
 
             if (!IsUserLoggedIn)
             {
                 MainPage = new NavigationPage(new LoginPage());
+            }
+            else if (IsUserLoggedIn && !IsProfileCompleted)
+            {
+                MainPage = new NavigationPage(new CompleteProfilePage(false,null));
             }
             else
             {

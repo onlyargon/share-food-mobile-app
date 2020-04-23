@@ -59,17 +59,17 @@ namespace FoodShare.Views
                 {
                     if (res.Code == 0)
                     {
-                        await DisplayAlert("Success", "Order placed successfully with order number " + res.Data, null, "OK");
+                        await DisplayAlert("Success!", "Order placed successfully with order number " + res.Data.orderNumber, null, "OK");
 
                         OrderData order = new OrderData()
                         {
                             itemId = OperationData.CartItemList[0].id,
-                            //id = res.orderId
+                            foodName = OperationData.CartItemList[0].foodName,
+                            id = res.Data.orderId,
+                            SellerId = placeOrderRequest.sellerId
                         };
                         await PopupNavigation.PushAsync(new OrderItemStarRatingPopup(order));
                         Application.Current.MainPage = new NavigationPage(new MainPage());
-                        pastOrdersViewModel.LoadOrdersCommand.Execute(null);
-                        itemsViewModel.LoadItemsCommand.Execute(null);
                         OperationData.CartItemList.Clear();
                     }
                     else

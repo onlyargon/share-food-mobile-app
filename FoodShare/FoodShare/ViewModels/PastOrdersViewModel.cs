@@ -49,6 +49,14 @@ namespace FoodShare.ViewModels
                     {
                         foreach (var item in res.Data)
                         {
+                            if(item.isRated == true)
+                            {
+                                item.isRateBtnVisible = false;
+                            }
+                            else
+                            {
+                                item.isRateBtnVisible = true;
+                            }
                             item.orderPrice = (Convert.ToDouble(item.unitPrice) * Convert.ToDouble(item.qty)).ToString("N2");
                             Orders.Add(item);
                         }

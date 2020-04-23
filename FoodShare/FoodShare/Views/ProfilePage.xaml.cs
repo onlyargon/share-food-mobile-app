@@ -21,7 +21,7 @@ namespace FoodShare.Views
     {
         UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
         ItemsViewModel viewModel = new ItemsViewModel();
-
+        ResultData userInfo = new ResultData();
         bool IsAnotherUser { get; set; }
         int UserId { get; set; }
         public List<ItemsWithRating> Items { get; set; }
@@ -50,6 +50,7 @@ namespace FoodShare.Views
         {
             if (IsAnotherUser)
             {
+                EditProfileButton.IsVisible = false;
                 GetUserProfileByIdRequest reqObj = new GetUserProfileByIdRequest()
                 {
                     userId = UserId.ToString()
@@ -58,6 +59,7 @@ namespace FoodShare.Views
             }
             else
             {
+                EditProfileButton.IsVisible = true;
                 GetUserProfileByIdRequest reqObj = new GetUserProfileByIdRequest()
                 {
                     userId = OperationData.userId.ToString()
@@ -73,8 +75,11 @@ namespace FoodShare.Views
             {
                 if (res.Code == 0)
                 {
-                    UserName.Text = res.Data.userInfo.username;
-                    JoinedDate.Text = "Joined on :  " + Convert.ToDateTime(res.Data.userInfo.joinedDate).ToString("yyyy-MM-dd");
+                    userInfo = res.Data;
+                    UserName.Text = res.Data.basicInfo.displayName;
+                    JoinedDate.Text = Convert.ToDateTime(res.Data.userInfo.joinedDate).ToString("yyyy-MM-dd");
+                    ContactNumber.Text = res.Data.basicInfo.mobileNumber;
+                    UserLevel.Text = res.Data.basicInfo.level != null ? res.Data.basicInfo.level.ToString() : "0";
                     Items = res.Data.itemsWithRating;
 
                     if (!IsAnotherUser)
@@ -206,6 +211,25 @@ namespace FoodShare.Views
         {
             await LoadUser();
             ProfileRefreshView.IsRefreshing = false;
+        }
+
+        private async void EditProfileButton_Clicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.IsEnabled = false;
+            try
+            {
+                await Navigation.PushModalAsync(new CompleteProfilePage(true, userInfo));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            }
         }
     }
 }

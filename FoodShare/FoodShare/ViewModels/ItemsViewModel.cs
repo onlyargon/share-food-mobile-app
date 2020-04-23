@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using FoodShare.Models;
+using FoodShare.Models.GetAllItems;
 using FoodShare.Views;
 using static FoodShare.Models.Constants;
 using FoodShare.Services;
 using System.Collections.Generic;
 using System.Windows.Input;
 using FoodShare.Models.UpdateItem;
+using System.IO;
+using static FoodShare.Models.Favourites.GetFavouriteItemsByUserIdResponse;
 
 namespace FoodShare.ViewModels
 {
@@ -52,14 +55,25 @@ namespace FoodShare.ViewModels
             try
             {
                 Items.Clear();
-
-                var res = await GetAllItems();
+                GetAllItemsRequest request = new GetAllItemsRequest()
+                {
+                    userId = OperationData.userId
+                };
+                var res = await GetAllItems(request);
                 if (res != null)
                 {
                     if (res.Code == 0)
                     {
                         foreach (var item in res.Data)
                         {
+                            if (item.isFavorite == true)
+                            {
+                                item.isNotFavorite = false;
+                            }
+                            else 
+                            {
+                                item.isNotFavorite = true;
+                            }
                             item.unitPrice = Convert.ToDouble(item.unitPrice).ToString("N2");
                             Items.Add(item);
                         }
@@ -77,10 +91,10 @@ namespace FoodShare.ViewModels
             }
         }
 
-        public async Task<Item> GetAllItems()
+        public async Task<Item> GetAllItems(GetAllItemsRequest request)
         {
             IsBusy = true;
-            Item res = await itemsAPI.GetAllItems();
+            Item res = await itemsAPI.GetAllItems(request);
             IsBusy = false;
             return res;
 
@@ -98,6 +112,14 @@ namespace FoodShare.ViewModels
         {
             IsBusy = true;
             var res = await itemsAPI.UpdateItem(item);
+            IsBusy = false;
+            return res;
+        }
+
+        public async Task<IMGURResponse> SaveImage(byte[] foodImage)
+        {
+            IsBusy = true;
+            var res = await itemsAPI.SaveImageTest(foodImage);
             IsBusy = false;
             return res;
         }

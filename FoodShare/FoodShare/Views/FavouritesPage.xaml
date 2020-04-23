@@ -10,14 +10,79 @@
         <Label Text="Favourites" FontFamily="{StaticResource PoppinsMedium}" TextColor="White" FontSize="24"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <CustomControls:FontIconLabel Text="{x:Static CustomControls:Icon.HeartOutline}"
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Refreshing="FavItems_Refreshing">
+            <Grid>
+                <StackLayout x:Name="NoFavouritesView" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding res.isNoFavItemsVisible}">
+                    <CustomControls:FontIconLabel Text="{x:Static CustomControls:Icon.HeartOutline}"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center"
                                             FontSize="128"
                                             TextColor="#C3C3C3" />
-            <Label Text="You don't have any favourite items" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#C3C3C3" FontSize="20"/>
-            <!--<Stepper x:Name="QuantityStepper" Minimum="1" Increment="1" HorizontalOptions="Center" ValueChanged="Stepper_ValueChanged" VerticalOptions="Center"/>-->
-        </StackLayout>
+                    <Label Text="You don't have any favourite items" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#C3C3C3" FontSize="20"/>
+                    <!--<Stepper x:Name="QuantityStepper" Minimum="1" Increment="1" HorizontalOptions="Center" ValueChanged="Stepper_ValueChanged" VerticalOptions="Center"/>-->
+                </StackLayout>
+                <CollectionView Margin="10" x:Name="FavouritesCollectionView" ItemsSource="{Binding Favourites}" VerticalScrollBarVisibility="Always">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" Padding="5">
+                                    <Frame BorderColor="White" HasShadow="True" CornerRadius="10" Padding="5" IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="35"/>
+                                                <RowDefinition Height="35"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="75"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Frame Grid.Column="0" Grid.RowSpan="2" Padding="0" CornerRadius="8">
+                                                <Grid>
+                                                    <Image>
+                                                        <Image.Source>
+                                                            <FontImageSource Glyph="&#xf025a;" Size="40" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                                        </Image.Source>
+                                                    </Image>
+                                                    <Image Source="{Binding itemImage}" Aspect="AspectFill"/>
+                                                </Grid>
+                                            </Frame>
+
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding foodName}" MaxLines="1" FontSize="Medium" FontFamily="{StaticResource PoppinsSemiBold}" LineBreakMode="TailTruncation"/>
+
+                                            <Label Grid.Row="1" Grid.Column="1" MaxLines="1" LineBreakMode="TailTruncation">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Unit price: "/>
+                                                        <Span Text="Rs. " TextColor="Black"/>
+                                                        <Span Text="{Binding unitPrice}" TextColor="Black" FontSize="14" FontFamily="{StaticResource PoppinsSemiBold}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <StackLayout Grid.Row="0" Grid.Column="2" Margin="5" Orientation="Vertical">
+                                                <Image IsVisible="{Binding isFavorite}">
+                                                    <Image.Source>
+                                                        <FontImageSource Glyph="&#xf02d1;" Size="20" Color="#F25278" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                                    </Image.Source>
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="BtnAddToFavourites_Tapped" NumberOfTapsRequired="1"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

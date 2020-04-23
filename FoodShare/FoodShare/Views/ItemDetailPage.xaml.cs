@@ -48,6 +48,7 @@ namespace FoodShare.Views
                     cartItem = res.Data;
                     ItemName.Text = res.Data.foodName;
                     ItemDescription.Text = res.Data.description;
+                    ItemImage.Source = res.Data.itemImage;
                     ItemPreparedOn.Text = res.Data.preparedOn;
                     ItemExpiryDate.Text = res.Data.expiryDate;
                     ItemUnitPrice.Text = res.Data.unitPrice;

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FoodShare.Views.CompleteProfilePage">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Spacing="40" Padding="15" Margin="0,20,0,0">
+
+                        <StackLayout Spacing="20">
+                            <Label Text="Basic details" TextColor="Black" FontSize="Large" Margin="0,0,0,20"/>
+
+                            <!--<FlexLayout Direction="Column" IsVisible="False">
+                            <Label Text=" Profile image" FontSize="Medium" />
+                            <StackLayout Orientation="Horizontal">
+                                <Button x:Name="FoodImageTaker" Text="Take a photo" FontSize="14" TextColor="Accent" HeightRequest="40" BackgroundColor="WhiteSmoke" Padding="5" CornerRadius="5" Clicked="FoodImageTaker_Clicked">
+                                    <Button.ImageSource>
+                                        <FontImageSource Glyph="&#xf0edb;" Color="#C3C3C3" Size="20" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                    </Button.ImageSource>
+                                </Button>
+                                <Button x:Name="FoodImagePicker" Text="Select from gallery" FontSize="14" TextColor="Accent" HeightRequest="40" BackgroundColor="WhiteSmoke" Padding="5" CornerRadius="5" Clicked="FoodImagePicker_Clicked">
+                                    <Button.ImageSource>
+                                        <FontImageSource Glyph="&#xf087c;" Color="#C3C3C3" Size="20" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                    </Button.ImageSource>
+                                </Button>
+                            </StackLayout>
+                            <Frame BackgroundColor="WhiteSmoke" CornerRadius="10" HasShadow="False" Padding="0" WidthRequest="120" HeightRequest="120" Margin="0,15,0,0">
+                                <Grid>
+                                    <Image x:Name="FoodImagePlaceholder" Aspect="AspectFill">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                        </FlexLayout>-->
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" First name" FontSize="Medium" />
+                                <Entry  x:Name="FirstName" TextChanged="FirstName_TextChanged" Keyboard="Text"/>
+                                <Label x:Name="FirstNameErrorLabel" Text="  *First name is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Last name" FontSize="Medium" />
+                                <Entry  x:Name="LastName" TextChanged="LastName_TextChanged" Keyboard="Text"/>
+                                <Label x:Name="LastNameErrorLabel" Text="  *Last name is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Display name" FontSize="Medium" />
+                                <Entry  x:Name="DisplayName" TextChanged="DisplayName_TextChanged" Keyboard="Text"/>
+                                <Label x:Name="DisplayNameErrorLabel" Text="  *Display name is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Gender" FontSize="Medium" />
+                                <Picker x:Name="GenderSelector" ItemsSource="{Binding GenderTypes}" ItemDisplayBinding="{Binding description}" SelectedIndexChanged="GenderSelector_SelectedIndexChanged"/>
+                                <Label x:Name="GenderTypeErrorLabel" Text="  *Select your gender" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Date of birth" FontSize="Medium" />
+                                <DatePicker x:Name="DoB" DateSelected="DoB_DateSelected"/>
+                                <Label x:Name="DoBErrorLabel" Text="  *Select a different date of birth" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Contact number" FontSize="Medium" />
+                                <Entry x:Name="ContactNumber" Keyboard="Telephone" TextChanged="ContactNumber_TextChanged"/>
+                                <Label x:Name="ContactNumberErrorLabel" Text="  *Contact number is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Email" FontSize="Medium" />
+                                <Entry x:Name="Email" Keyboard="Email" TextChanged="Email_TextChanged"/>
+                                <Label x:Name="EmailErrorLabel" Text="  *Please enter a valid email address" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+                        </StackLayout>
+
+                        <StackLayout Spacing="20" >
+                            <Label Text="Address details" TextColor="Black" FontSize="Large" Margin="0,0,0,20"/>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Address line 1" FontSize="Medium" />
+                                <Entry  x:Name="AddressLine1" TextChanged="AddressLine1_TextChanged" Keyboard="Text"/>
+                                <Label x:Name="AddressLine1ErrorLabel" Text="  *Address line 1 is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Address line 2" FontSize="Medium" />
+                                <Entry  x:Name="AddressLine2" TextChanged="AddressLine2_TextChanged" Keyboard="Text"/>
+                                <Label x:Name="AddressLine2ErrorLabel" Text="  *Address line 2 is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Address line 3" FontSize="Medium" />
+                                <Entry  x:Name="AddressLine3" TextChanged="AddressLine3_TextChanged" Keyboard="Text"/>
+                                <Label x:Name="AddressLine3ErrorLabel" Text="  *Address line 3 is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" Postal / ZIP code" FontSize="Medium" />
+                                <Entry  x:Name="PostalCode" TextChanged="PostalCode_TextChanged" Keyboard="Numeric"/>
+                                <Label x:Name="PostalCodeErrorLabel" Text="  *Postal/ZIP code is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" State" FontSize="Medium" />
+                                <Entry  x:Name="State" TextChanged="State_TextChanged" Keyboard="Text"/>
+                                <Label x:Name="StateErrorLabel" Text="  *State is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+
+                            <FlexLayout Direction="Column">
+                                <Label Text=" City" FontSize="Medium" />
+                                <Entry  x:Name="City" TextChanged="City_TextChanged" Keyboard="Text"/>
+                                <Label x:Name="CityErrorLabel" Text="  *City is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
+                            </FlexLayout>
+                        </StackLayout>
+                        
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="End" BackgroundColor="Accent">
+                        <Button x:Name="BtnClear" Text="Clear" TextColor="#757575" BackgroundColor="#C3C3C3" HorizontalOptions="FillAndExpand" Clicked="BtnClear_Clicked" />
+                        <Button x:Name="BtnProceed" Text="Proceed" TextColor="White" BackgroundColor="Accent" HorizontalOptions="FillAndExpand" Clicked="Save_Clicked"/>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <StackLayout IsVisible="{Binding IsBusy}" BackgroundColor="WhiteSmoke" Opacity="1" Orientation="Vertical" x:Name="BusyIndicator">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="50">
+                    <ActivityIndicator Color="Accent" IsRunning="true" />
+                    <Label x:Name="progressname" Text="Creating your profile ..." TextColor="Accent" VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static FoodShare.Models.OrderRating.OrderRatingResponse;
 
 namespace FoodShare.Views
 {
@@ -19,6 +20,7 @@ namespace FoodShare.Views
     public partial class OrderItemStarRatingPopup : CustomControls.CustomPopup
     {
         OrderRatingViewModel orderRatingViewModel = new OrderRatingViewModel();
+        PastOrdersViewModel pastOrdersViewModel = new PastOrdersViewModel();
         OrderData order = new OrderData();
         public OrderItemStarRatingPopup(OrderData orderData)
         {
@@ -43,6 +45,7 @@ namespace FoodShare.Views
                 {
                     userId = OperationData.userId,
                     itemId = order.itemId,
+                    sellerId = order.SellerId,
                     orderId = order.id,
                     comment = !string.IsNullOrEmpty(OrderCommentEditor.Text) == true ? OrderCommentEditor.Text : "",
                     starRating = RatingView.Value != null ? Convert.ToInt32(RatingView.Value) : 0
@@ -53,6 +56,8 @@ namespace FoodShare.Views
                     if (res.Code == 0)
                     {
                         await PopupNavigation.PopAsync();
+                        //pastOrdersViewModel.LoadOrdersCommand.Execute(null);
+                        MessagingCenter.Send(res.Data, "ORDER_RATED");
                     }
                     else
                     {
@@ -74,18 +79,18 @@ namespace FoodShare.Views
             }
         }
 
-        private void SfRatingSettings_Focused(object sender, FocusEventArgs e)
+        private void OrderCommentEditor_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SfRating sfRating = (SfRating)sender;
-            if (sfRating.Value > 0)
+            if (!string.IsNullOrEmpty(OrderCommentEditor.Text))
             {
                 SubmitButton.IsEnabled = true;
             }
         }
 
-        private void OrderCommentEditor_TextChanged(object sender, TextChangedEventArgs e)
+        private void RatingView_ValueChanged(object sender, ValueEventArgs e)
         {
-            if (!string.IsNullOrEmpty(OrderCommentEditor.Text))
+            SfRating sfRating = (SfRating)sender;
+            if (sfRating.Value > 0)
             {
                 SubmitButton.IsEnabled = true;
             }

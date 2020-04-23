@@ -23,7 +23,6 @@ namespace FoodShare.Views
     {
         ItemsViewModel itemsViewModel = new ItemsViewModel();
         public ItemResult Item { get; set; }
-        private string itemImage;
         public bool IsFromUpdate;
 
         public NewItemPage(bool isFromUpdate, ItemResult item)
@@ -121,39 +120,73 @@ namespace FoodShare.Views
 
         async Task<AddItemRequest> SaveNewItemDetails()
         {
-            FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
-            AddItemRequest addItemRequest = new AddItemRequest
+            IMGURResponse response = await itemsViewModel.SaveImage(OperationData.ItemImage);
+
+            if (response != null)
             {
-                userId = OperationData.userId,
-                foodType = foodType.description,
-                foodName = FoodName.Text,
-                unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
-                quantity = Quantity.Text,
-                description = Description.Text,
-                itemImage = itemImage != null ? Convert.ToBase64String(OperationData.ItemImage) : null,
-                preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
-                expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd")
-            };
-            return addItemRequest;
+                if (response.success)
+                {
+                    FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
+                    AddItemRequest addItemRequest = new AddItemRequest
+                    {
+                        userId = OperationData.userId,
+                        foodType = foodType.description,
+                        foodName = FoodName.Text,
+                        unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
+                        quantity = Quantity.Text,
+                        description = Description.Text,
+                        itemImage = response.data.link != null ? response.data.link : "",
+                        preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
+                        expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd")
+                    };
+                    return addItemRequest;
+                }
+                else
+                {
+                    await DisplayAlert("Message", "Something went wrong while uploading your image. Please try again", null, "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Message", "Something went wrong while uploading your image. Please try again", null, "OK");
+            }
+            return null;
         }
 
         async Task<UpdateItemRequest> SaveEditItemDetails()
         {
-            FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
-            UpdateItemRequest updateItemRequest = new UpdateItemRequest
+            IMGURResponse response = await itemsViewModel.SaveImage(OperationData.ItemImage);
+
+            if (response != null)
             {
-                id = Item.id,
-                userId = OperationData.userId,
-                foodType = foodType.description,
-                foodName = FoodName.Text,
-                unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
-                quantity = Quantity.Text,
-                description = Description.Text,
-                preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
-                expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd"),
-                isActive = DateExpiry.Date.Date >= DateTime.Today ? true : false
-            };
-            return updateItemRequest;
+                if (response.success)
+                {
+                    FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
+                    UpdateItemRequest updateItemRequest = new UpdateItemRequest
+                    {
+                        id = Item.id,
+                        userId = OperationData.userId,
+                        foodType = foodType.description,
+                        foodName = FoodName.Text,
+                        unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
+                        quantity = Quantity.Text,
+                        description = Description.Text,
+                        preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
+                        expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd"),
+                        isActive = DateExpiry.Date.Date >= DateTime.Today ? true : false
+                    };
+                    return updateItemRequest;
+                }
+                else
+                {
+                    await DisplayAlert("Message", "Something went wrong while uploading your image. Please try again", null, "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Message", "Something went wrong while uploading your image. Please try again", null, "OK");
+            }
+            return null;
         }
 
         async void Cancel_Clicked(object sender, EventArgs e)
@@ -184,11 +217,11 @@ namespace FoodShare.Views
             {
                 FoodNameErrorLabel.IsVisible = true;
             }
-            else if (!string.IsNullOrEmpty(FoodName.Text) && string.IsNullOrEmpty(UnitPrice.Text))
+            else if (FoodTypeSelector.SelectedItem != null && !string.IsNullOrEmpty(FoodName.Text) && string.IsNullOrEmpty(UnitPrice.Text))
             {
                 UnitPriceErrorLabel.IsVisible = true;
             }
-            else if (!string.IsNullOrEmpty(FoodName.Text) && !string.IsNullOrEmpty(UnitPrice.Text) && string.IsNullOrEmpty(Quantity.Text))
+            else if (FoodTypeSelector.SelectedItem != null && !string.IsNullOrEmpty(FoodName.Text) && !string.IsNullOrEmpty(UnitPrice.Text) && string.IsNullOrEmpty(Quantity.Text))
             {
                 UnitPriceErrorLabel.IsVisible = true;
             }
@@ -301,6 +334,7 @@ namespace FoodShare.Views
 
                 OperationData.ItemImage = null;
                 OperationData.ItemImage = buffer;
+                
                 FoodImagePlaceholder.Source = ImageSource.FromStream(() =>
                 {
                     return new MemoryStream(OperationData.ItemImage);

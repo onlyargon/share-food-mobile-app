@@ -32,14 +32,14 @@
 
                     <Grid Grid.Row="0">
                         <Frame x:Name ="imageFrame" HorizontalOptions="FillAndExpand" BindingContext="{x:Reference imageFrame}" HeightRequest="{Binding WidthRequest}" HasShadow="False" Margin="0" Padding="0">
-                            <Image >
-                                <Image.Source>
-                                    <x:String>food.jpg</x:String>
-                                </Image.Source>
-                                <!--<Image.Source>
-                                        <FontImageSource Glyph="&#xf025a;" Size="20" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
-                                    </Image.Source>-->
-                            </Image>
+                            <Grid>
+                                <Image>
+                                    <Image.Source>
+                                        <FontImageSource Glyph="&#xf025a;" Size="500" Color="#C3C3C3" FontFamily="{StaticResource MaterialFontFamily}"/>
+                                    </Image.Source>
+                                </Image>
+                                <Image x:Name="ItemImage" Aspect="AspectFill"/>
+                            </Grid>
                         </Frame>
 
                     </Grid>
