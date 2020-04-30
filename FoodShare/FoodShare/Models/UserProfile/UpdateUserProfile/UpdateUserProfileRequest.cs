@@ -24,6 +24,7 @@ namespace FoodShare.Models.UserProfile.UpdateUserProfile
         public string dob { get; set; }
         public string mobileNumber { get; set; }
         public string email { get; set; }
+        public string userLocation { get; set; }
     }
 
     public class Address

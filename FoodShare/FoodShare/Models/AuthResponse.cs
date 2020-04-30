@@ -30,6 +30,7 @@ namespace FoodShare.Models
             public int userId { get; set; }
             public string username { get; set; }
             public bool isProfileCompleted { get; set; }
+            public string userLocation { get; set; }
         }
     }
 }

@@ -28,7 +28,7 @@
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="330" HeightRequest="300">
                 <Frame BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="10" Margin="5" Padding="20,20,20,10">
                     <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                        <Label VerticalOptions="Start" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black"  FontFamily="{StaticResource PoppinsMedium}" MaxLines="3" LineBreakMode="WordWrap" >
+                        <Label VerticalOptions="Start" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" TextColor="Black" FontFamily="{StaticResource PoppinsMedium}" MaxLines="3" LineBreakMode="WordWrap" >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="How was your order of ' "/>

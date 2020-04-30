@@ -62,49 +62,57 @@ namespace FoodShare.Views
                 {
                     var addItemRequest = await SaveNewItemDetails();
 
-                    var res = await itemsViewModel.AddItem(addItemRequest);
-
-                    if (res != null)
+                    if (addItemRequest != null)
                     {
-                        if (res.Code == 0)
+                        var res = await itemsViewModel.AddItem(addItemRequest);
+
+                        if (res != null)
                         {
-                            InvoceCallback();
-                            DisplayAlert("Message", "Item added successfully!", null, "OK");
-                            await Navigation.PopModalAsync();
+                            if (res.Code == 0)
+                            {
+                                InvoceCallback();
+                                DisplayAlert("Message", "Item added successfully!", null, "OK");
+                                await Navigation.PopModalAsync();
+                            }
+                            else
+                            {
+                                await DisplayAlert("Message", "Adding Item Failed. Please try again", null, "OK");
+                            }
                         }
                         else
                         {
                             await DisplayAlert("Message", "Adding Item Failed. Please try again", null, "OK");
                         }
                     }
-                    else
-                    {
-                        await DisplayAlert("Message", "Adding Item Failed. Please try again", null, "OK");
-                    }
+                    
                 }
                 else if(IsValid && IsFromUpdate)
                 {
                     var updateItemRequest = await SaveEditItemDetails();
 
-                    var res = await itemsViewModel.UpdateItem(updateItemRequest);
-
-                    if (res != null)
+                    if (updateItemRequest != null)
                     {
-                        if (res.Code == 0)
+                        var res = await itemsViewModel.UpdateItem(updateItemRequest);
+
+                        if (res != null)
                         {
-                            InvoceCallback();
-                            DisplayAlert("Message", "Item updated successfully!", null, "OK");
-                            await Navigation.PopModalAsync();
+                            if (res.Code == 0)
+                            {
+                                InvoceCallback();
+                                DisplayAlert("Message", "Item updated successfully!", null, "OK");
+                                await Navigation.PopModalAsync();
+                            }
+                            else
+                            {
+                                await DisplayAlert("Message", "Updating Item Failed. Please try again", null, "OK");
+                            }
                         }
                         else
                         {
                             await DisplayAlert("Message", "Updating Item Failed. Please try again", null, "OK");
                         }
                     }
-                    else
-                    {
-                        await DisplayAlert("Message", "Updating Item Failed. Please try again", null, "OK");
-                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -137,7 +145,8 @@ namespace FoodShare.Views
                         description = Description.Text,
                         itemImage = response.data.link != null ? response.data.link : "",
                         preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
-                        expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd")
+                        expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd"),
+                        userLocation = OperationData.userLocation
                     };
                     return addItemRequest;
                 }
@@ -155,27 +164,34 @@ namespace FoodShare.Views
 
         async Task<UpdateItemRequest> SaveEditItemDetails()
         {
-            IMGURResponse response = await itemsViewModel.SaveImage(OperationData.ItemImage);
-
-            if (response != null)
+            if (OperationData.IsItemImageUpdated)
             {
-                if (response.success)
+                IMGURResponse response = await itemsViewModel.SaveImage(OperationData.ItemImage);
+                if (response != null)
                 {
-                    FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
-                    UpdateItemRequest updateItemRequest = new UpdateItemRequest
+                    if (response.success)
                     {
-                        id = Item.id,
-                        userId = OperationData.userId,
-                        foodType = foodType.description,
-                        foodName = FoodName.Text,
-                        unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
-                        quantity = Quantity.Text,
-                        description = Description.Text,
-                        preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
-                        expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd"),
-                        isActive = DateExpiry.Date.Date >= DateTime.Today ? true : false
-                    };
-                    return updateItemRequest;
+                        FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
+                        UpdateItemRequest updateItemRequest = new UpdateItemRequest
+                        {
+                            id = Item.id,
+                            userId = OperationData.userId,
+                            foodType = foodType.description,
+                            foodName = FoodName.Text,
+                            unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
+                            quantity = Quantity.Text,
+                            description = Description.Text,
+                            preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
+                            expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd"),
+                            isActive = DateExpiry.Date.Date >= DateTime.Today ? true : false,
+                            userLocation = OperationData.userLocation
+                        };
+                        return updateItemRequest;
+                    }
+                    else
+                    {
+                        await DisplayAlert("Message", "Something went wrong while uploading your image. Please try again", null, "OK");
+                    }
                 }
                 else
                 {
@@ -184,7 +200,22 @@ namespace FoodShare.Views
             }
             else
             {
-                await DisplayAlert("Message", "Something went wrong while uploading your image. Please try again", null, "OK");
+                FoodType foodType = (FoodType)FoodTypeSelector.SelectedItem;
+                UpdateItemRequest updateItemRequest = new UpdateItemRequest
+                {
+                    id = Item.id,
+                    userId = OperationData.userId,
+                    foodType = foodType.description,
+                    foodName = FoodName.Text,
+                    unitPrice = Convert.ToDouble(UnitPrice.Text).ToString("0.00"),
+                    quantity = Quantity.Text,
+                    description = Description.Text,
+                    preparedOn = DatePrepared.Date.Date.ToString("yyyy-MM-dd"),
+                    expiryDate = DateExpiry.Date.Date.ToString("yyyy-MM-dd"),
+                    isActive = DateExpiry.Date.Date >= DateTime.Today ? true : false,
+                    userLocation = OperationData.userLocation
+                };
+                return updateItemRequest;
             }
             return null;
         }
@@ -293,6 +324,7 @@ namespace FoodShare.Views
                 }
             }
             Title = "Edit Item";
+            FoodImagePlaceholder.Source = item.itemImage;
             FoodName.Text = item.foodName;
             UnitPrice.Text = Convert.ToDouble(item.unitPrice).ToString("N2");
             Quantity.Text = item.quantity;
@@ -334,7 +366,8 @@ namespace FoodShare.Views
 
                 OperationData.ItemImage = null;
                 OperationData.ItemImage = buffer;
-                
+                OperationData.IsItemImageUpdated = true;
+
                 FoodImagePlaceholder.Source = ImageSource.FromStream(() =>
                 {
                     return new MemoryStream(OperationData.ItemImage);
@@ -402,6 +435,8 @@ namespace FoodShare.Views
 
                 OperationData.ItemImage = null;
                 OperationData.ItemImage = buffer;
+                OperationData.IsItemImageUpdated = true;
+
                 FoodImagePlaceholder.Source = ImageSource.FromStream(() =>
                 {
                     return new MemoryStream(OperationData.ItemImage);

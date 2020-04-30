@@ -12,6 +12,7 @@ namespace FoodShare.Models
         public string unitPrice { get; set; }
         public string quantity { get; set; }
         public string description { get; set; }
+        public string userLocation { get; set; }
         public string itemImage { get; set; }
         public string preparedOn { get; set; }
         public string expiryDate { get; set; }

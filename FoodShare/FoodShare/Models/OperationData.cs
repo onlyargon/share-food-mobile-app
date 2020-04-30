@@ -12,10 +12,14 @@ namespace FoodShare.Models
         public OperationData()
         {
             CartItemList = new ObservableCollection<ItemResult>();
+            
         }
         public static int userId { get; set; }
+        public static string userLocation { get; set; }
+        public static string filterLocation { get; set; }
         public static ObservableCollection<ItemResult> CartItemList { get; set; }
         public static ObservableCollection<FavouriteItems> FavouriteItemList { get; set; }
         public static byte[] ItemImage { get; set; }
+        public static bool IsItemImageUpdated { get; set; }
     }
 }

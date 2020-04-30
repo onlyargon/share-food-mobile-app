@@ -15,6 +15,7 @@ using Xamarin.Essentials;
 using FoodShare.Models.Favourites;
 using FoodShare.Models.GetAllItems;
 using static FoodShare.Models.Favourites.GetFavouriteItemsByUserIdResponse;
+using Rg.Plugins.Popup.Services;
 
 namespace FoodShare.Views
 {
@@ -261,6 +262,38 @@ namespace FoodShare.Views
         {
             RefreshView refreshView = (RefreshView)sender;
             viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private async void FilterButton_Clicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.IsEnabled = false;
+
+            try
+            {
+                await OpenFilterPage();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            }
+        }
+
+        private async Task OpenFilterPage()
+        {
+            FilterPage filterPage = new FilterPage();
+            filterPage.CallbackEvent += async (object sender, object e) => await FilterPageCallbackMethod();
+            await PopupNavigation.PushAsync(filterPage);
+
+        }
+
+        async Task FilterPageCallbackMethod()
+        {
+            Items_Refreshed(ItemsRefreshView, null);
         }
     }
 }

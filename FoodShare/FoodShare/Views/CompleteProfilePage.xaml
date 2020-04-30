@@ -121,7 +121,8 @@
 
                             <FlexLayout Direction="Column">
                                 <Label Text=" City" FontSize="Medium" />
-                                <Entry  x:Name="City" TextChanged="City_TextChanged" Keyboard="Text"/>
+                                <!--<Entry  x:Name="City" TextChanged="City_TextChanged" Keyboard="Text"/>-->
+                                <Picker x:Name="CitySelector" ItemsSource="{Binding Cities}" ItemDisplayBinding="{Binding description}" SelectedIndexChanged="CitySelector_SelectedIndexChanged"/>
                                 <Label x:Name="CityErrorLabel" Text="  *City is required" FontSize="Small" TextColor="Red" IsVisible="False"/>
                             </FlexLayout>
                         </StackLayout>

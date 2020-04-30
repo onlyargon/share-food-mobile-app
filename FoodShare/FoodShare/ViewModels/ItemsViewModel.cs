@@ -15,6 +15,8 @@ using System.Windows.Input;
 using FoodShare.Models.UpdateItem;
 using System.IO;
 using static FoodShare.Models.Favourites.GetFavouriteItemsByUserIdResponse;
+using static FoodShare.Models.OperationData;
+using static FoodShare.Models.Cities;
 
 namespace FoodShare.ViewModels
 {
@@ -23,15 +25,19 @@ namespace FoodShare.ViewModels
         private ItemsAPI itemsAPI = new ItemsAPI();
         public ObservableCollection<Data> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
+        Cities city = new Cities();
         public class FoodType
         {
             public string description { get; set; }
         }
         public  List<FoodType> FoodTypes { get; set; }
+        public  ObservableCollection<City> Cities { get; set; }
+
         public ItemsViewModel()
         {
             Title = "Home";
             Items = new ObservableCollection<Data>();
+            Cities = city.MainCities;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             this.FoodTypes = new List<FoodType>();
@@ -57,7 +63,8 @@ namespace FoodShare.ViewModels
                 Items.Clear();
                 GetAllItemsRequest request = new GetAllItemsRequest()
                 {
-                    userId = OperationData.userId
+                    userId = OperationData.userId,
+                    userLocation = OperationData.filterLocation
                 };
                 var res = await GetAllItems(request);
                 if (res != null)

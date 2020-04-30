@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static FoodShare.Models.Cities;
+using static FoodShare.Models.OperationData;
 using static FoodShare.ViewModels.UserProfileViewModel;
 
 namespace FoodShare.Views
@@ -20,10 +22,12 @@ namespace FoodShare.Views
     {
         UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
         public bool IsFromUpdate;
-
+        City selectedCity = new City();
+        Cities city = new Cities();
         public CompleteProfilePage(bool isFromUpdate, ResultData userInfo)
         {
             InitializeComponent();
+            CitySelector.ItemsSource = city.MainCities;
             this.IsFromUpdate = isFromUpdate;
             DoB.MaximumDate = DateTime.Today;
             IsFromUpdate = isFromUpdate;
@@ -72,7 +76,14 @@ namespace FoodShare.Views
                 AddressLine3.Text = !string.IsNullOrEmpty(userInfo.address.addressLine3) ? userInfo.address.addressLine3 : "";
                 PostalCode.Text = !string.IsNullOrEmpty(userInfo.address.zipCode) ? userInfo.address.zipCode : "";
                 State.Text = !string.IsNullOrEmpty(userInfo.address.state) ? userInfo.address.state : "";
-                City.Text = !string.IsNullOrEmpty(userInfo.address.city) ? userInfo.address.city : "";
+                //City.Text = !string.IsNullOrEmpty(userInfo.address.city) ? userInfo.address.city : "";
+                foreach (var city in city.MainCities)
+                {
+                    if(userInfo.address.city.ToUpper() == city.description.ToUpper())
+                    {
+                        CitySelector.SelectedItem = city;
+                    }
+                }
             }
             else
             {
@@ -224,17 +235,17 @@ namespace FoodShare.Views
             }
         }
 
-        private void City_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(City.Text))
-            {
-                City.Text = City.Text.Trim();
-            }
-            else
-            {
-                CityErrorLabel.IsVisible = false;
-            }
-        }
+        //private void City_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(City.Text))
+        //    {
+        //        City.Text = City.Text.Trim();
+        //    }
+        //    else
+        //    {
+        //        CityErrorLabel.IsVisible = false;
+        //    }
+        //}
 
         private void BtnClear_Clicked(object sender, EventArgs e)
         {
@@ -250,7 +261,8 @@ namespace FoodShare.Views
             AddressLine3.Text = "";
             PostalCode.Text = "";
             State.Text = "";
-            City.Text = "";
+            //City.Text = "";
+            CitySelector.SelectedItem = null;
         }
 
         public event EventHandler<object> CallbackEvent;
@@ -360,7 +372,11 @@ namespace FoodShare.Views
             {
                 AddressLine2ErrorLabel.IsVisible = true;
             }
-            if (string.IsNullOrEmpty(City.Text))
+            //if (string.IsNullOrEmpty(City.Text))
+            //{
+            //    CityErrorLabel.IsVisible = true;
+            //}
+            if (CitySelector.SelectedItem==null)
             {
                 CityErrorLabel.IsVisible = true;
             }
@@ -380,7 +396,8 @@ namespace FoodShare.Views
                 !string.IsNullOrEmpty(ContactNumber.Text) &&
                 !string.IsNullOrEmpty(AddressLine1.Text) &&
                 !string.IsNullOrEmpty(AddressLine2.Text) &&
-                !string.IsNullOrEmpty(City.Text) &&
+                //!string.IsNullOrEmpty(City.Text) &&
+                CitySelector.SelectedItem != null &&
                 !(string.IsNullOrEmpty(ContactNumber.Text) &&
                 (ContactNumber.Text.Length == 10)))
             {
@@ -389,7 +406,7 @@ namespace FoodShare.Views
                 ContactNumber.Text = ContactNumber.Text.Trim();
                 AddressLine1.Text = AddressLine1.Text.Trim();
                 AddressLine2.Text = AddressLine2.Text.Trim();
-                City.Text = City.Text.Trim();
+                //City.Text = City.Text.Trim();
                 isItemCompleted = true;
             }
             return isItemCompleted;
@@ -410,6 +427,7 @@ namespace FoodShare.Views
                     dob = DoB.Date.ToString("yyyy-MM-dd"),
                     mobileNumber = ContactNumber.Text,
                     email = !string.IsNullOrEmpty(Email.Text) ? Email.Text : "",
+                    userLocation = selectedCity.description.ToUpper()
                 },
                 address = new Models.UserProfile.CreateUserProfile.Address
                 {
@@ -419,7 +437,8 @@ namespace FoodShare.Views
                     addressLine3 = !string.IsNullOrEmpty(AddressLine3.Text) ? AddressLine3.Text : "",
                     zipCode = !string.IsNullOrEmpty(PostalCode.Text) ? PostalCode.Text : "",
                     state = !string.IsNullOrEmpty(State.Text) ? State.Text : "",
-                    city = City.Text
+                    //city = City.Text
+                    city = selectedCity.description
                 }
                 
             };
@@ -441,6 +460,7 @@ namespace FoodShare.Views
                     dob = DoB.Date.ToString("yyyy-MM-dd"),
                     mobileNumber = ContactNumber.Text,
                     email = !string.IsNullOrEmpty(Email.Text) ? Email.Text : "",
+                    userLocation = selectedCity.description.ToUpper()
                 },
                 address = new Models.UserProfile.UpdateUserProfile.Address
                 {
@@ -450,11 +470,21 @@ namespace FoodShare.Views
                     addressLine3 = !string.IsNullOrEmpty(AddressLine3.Text) ? AddressLine3.Text : "",
                     zipCode = !string.IsNullOrEmpty(PostalCode.Text) ? PostalCode.Text : "",
                     state = !string.IsNullOrEmpty(State.Text) ? State.Text : "",
-                    city = City.Text
+                    //city = City.Text
+                    city = selectedCity.description
                 }
 
             };
             return newProfileRequest;
+        }
+
+        private void CitySelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CitySelector.SelectedItem != null)
+            {
+                CityErrorLabel.IsVisible = false;
+                selectedCity = (City)CitySelector.SelectedItem;
+            }
         }
     }
 }

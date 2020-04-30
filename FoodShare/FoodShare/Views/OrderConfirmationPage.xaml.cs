@@ -84,7 +84,7 @@ namespace FoodShare.Views
             }
             catch (Exception ex)
             {
-                throw;
+                
             }
             finally
             {

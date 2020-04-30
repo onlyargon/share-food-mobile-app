@@ -84,6 +84,11 @@ namespace FoodShare.Views
                         ConfirmPasswordEntryInput.ErrorText = "Please confirm your password";
                         ConfirmPasswordEntryInput.HasError = true;
                     }
+                    else if (PasswordEntry.Text != ConfirmPasswordEntry.Text)
+                    {
+                        ConfirmPasswordEntryInput.ErrorText = "The passwords you entered do not match";
+                        ConfirmPasswordEntryInput.HasError = true;
+                    }
                     else
                     {
                         UserNameEntry.Text = UserNameEntry.Text.Trim();

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customcontrols:CustomPopup  xmlns:customcontrols="clr-namespace:FoodShare.CustomControls" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+                             mc:Ignorable="d"
+             x:Class="FoodShare.Views.FilterPage"
+                             HasKeyboardOffset="False">
+    <customcontrols:CustomPopup.Animation>
+        <animations:MoveAnimation
+            PositionIn="Right"
+            PositionOut="Right"/>
+    </customcontrols:CustomPopup.Animation>
+    <customcontrols:CustomPopup.Content>
+        <Grid HorizontalOptions="End" VerticalOptions="StartAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid BackgroundColor="White" Margin="0,55,0,0" Padding="20" HeightRequest="1000">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Text="Apply Filters" FontSize="Medium" FontFamily="{StaticResource PoppinsMedium}"/>
+
+                <StackLayout Grid.Row="1" Margin="0,20,0,0" >
+                    <Label Text=" Filter by area"/>
+                    <autocomplete:SfAutoComplete x:Name="autoComplete" AutoCompleteMode="Suggest" NoResultsFoundText="No Results Found" SelectionChanged="FilterSelection_Changed" FontFamily="{StaticResource PoppinsRegular}"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" VerticalOptions="End" Orientation="Horizontal">
+                    <Button Text="cancel" CornerRadius="5" TextColor="#757575" BackgroundColor="WhiteSmoke" HorizontalOptions="FillAndExpand" Clicked="Cancel_Clicked"/>
+                    <Button x:Name="Apply" Text="apply" CornerRadius="5" TextColor="White" BackgroundColor="Accent" HorizontalOptions="FillAndExpand" Clicked="Apply_Clicked" IsEnabled="False"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </customcontrols:CustomPopup.Content>
+</customcontrols:CustomPopup>

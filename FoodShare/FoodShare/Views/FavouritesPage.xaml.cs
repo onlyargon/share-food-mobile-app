@@ -143,5 +143,25 @@ namespace FoodShare.Views
         {
             await LoadFavourites();
         }
+
+        private async void Item_Tapped(object sender, EventArgs e)
+        {
+            Frame button = (Frame)sender;
+            button.IsEnabled = false;
+            try
+            {
+                var layout = (Frame)sender;
+                var item = (FavouriteItems)layout.BindingContext;
+                await App.Current.MainPage.Navigation.PushAsync(new ItemDetailPage(item.id));
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            }
+        }
     }
 }

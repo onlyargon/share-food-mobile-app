@@ -54,6 +54,8 @@ namespace FoodShare.Views
                                 // Possible that device doesn't support secure storage on device.
                             }
                             OperationData.userId = res.data.Data.userId;
+                            OperationData.userLocation = !string.IsNullOrEmpty(res.data.Data.userLocation) ? res.data.Data.userLocation : "";
+                            OperationData.filterLocation = OperationData.userLocation;
 
                             if (!res.data.Data.isProfileCompleted)
                             {

@@ -26,6 +26,7 @@ namespace FoodShare.Models.UserProfile.CreateUserProfile
         public string mobileNumber { get; set; }
         public string email { get; set; }
         public double ? level { get; set; }
+        public string userLocation { get; set; }
         public string createdAt { get; set; }
         public string updatedAt { get; set; }
     }

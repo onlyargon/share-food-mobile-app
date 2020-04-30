@@ -76,6 +76,9 @@
                                                 </Image>
                                             </StackLayout>
                                         </Grid>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Item_Tapped" NumberOfTapsRequired="1"/>
+                                        </Frame.GestureRecognizers>
                                     </Frame>
                                 </StackLayout>
                             </Grid>

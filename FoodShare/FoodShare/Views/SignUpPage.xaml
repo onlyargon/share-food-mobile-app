@@ -94,7 +94,7 @@
                     </FlexLayout>
                 </StackLayout>
             </Grid>
-            <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="End" BackgroundColor="Accent">
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="Accent">
                 <Button x:Name="BtnCancel" Text="Cancel" TextColor="#757575" BackgroundColor="#C3C3C3" HorizontalOptions="FillAndExpand" Clicked="BtnCancel_Clicked" />
                 <Button x:Name="BtnProceed" Text="Proceed" TextColor="White" BackgroundColor="Accent" HorizontalOptions="FillAndExpand" Clicked="BtnProceed_Clicked"/>
             </StackLayout>
