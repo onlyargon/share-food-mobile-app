@@ -67,7 +67,8 @@ namespace FoodShare.Views
 
             try
             {
-                OperationData.filterLocation = autoComplete.Text.ToUpper();
+                var area = (City)autoComplete.SelectedItem;
+                OperationData.filterLocation = area.description.ToUpper();
                 InvoceCallback();
                 await PopupNavigation.PopAsync();
             }

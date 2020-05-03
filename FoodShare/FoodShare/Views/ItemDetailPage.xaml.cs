@@ -95,6 +95,7 @@ namespace FoodShare.Views
                         OperationData.CartItemList.Add(cartItem);
 
                         BtnAddToCart.Text = "Added to cart";
+                        BtnAddToCart.TextColor = Color.FromHex("757575");
 
                         var answer = await DisplayAlert("Message", cartItem.numberOfItems + " " + cartItem.foodName + "(s) added to cart", "Go to cart", "OK");
                         if (answer)
@@ -109,7 +110,19 @@ namespace FoodShare.Views
                         {
                             await Navigation.PushAsync(new CartPage());
                         }
+                        BtnAddToCart.IsEnabled = true;
+                        BtnAddToCart.TextColor = Color.White;
                     }
+                }
+                else
+                {
+                    var answer = await DisplayAlert("Message", "Card is already full. Please checkout cart or remove item(s) from cart to add this item to the cart.", "Go to cart", "OK");
+                    if (answer)
+                    {
+                        await Navigation.PushAsync(new CartPage());
+                    }
+                    BtnAddToCart.IsEnabled = true;
+                    BtnAddToCart.TextColor = Color.White;
                 }
             }
             catch (Exception ex)
