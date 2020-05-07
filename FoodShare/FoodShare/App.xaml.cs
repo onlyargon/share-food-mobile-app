@@ -18,7 +18,7 @@ namespace FoodShare
         public static bool IsProfileCompleted { get; set; } = false;
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjM0NzgxQDMxMzgyZTMxMmUzMGZWSTlhdmRaVEpzLzYxNEtkTFNEVWs0d085RWMraW5KRUFkc2RTTGdTSnM9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR_LICENSE_KEY");
             InitializeComponent();
             OperationData.CartItemList = new ObservableCollection<ItemResult>();
             OperationData.FavouriteItemList = new ObservableCollection<FavouriteItems>();
